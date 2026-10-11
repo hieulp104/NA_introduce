@@ -109,7 +109,7 @@ function logToSheet(time, lead) {
     if (!book) return;
     const sheet = book.getSheetByName(SHEET_NAME) || book.insertSheet(SHEET_NAME);
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Thời gian', 'Tên', 'Điện thoại / Zalo', 'Cần làm', 'Ngân sách', 'Mô tả', 'Trang', 'Đã gọi lại']);
+      sheet.appendRow(['Thời gian', 'Tên', 'Điện thoại / Zalo', 'Cần làm', 'Ngân sách', 'Mô tả', 'Trang', 'Đã liên hệ']);
       sheet.setFrozenRows(1);
     }
     // Thêm dấu ' để Sheet không cắt số 0 đầu của số điện thoại.

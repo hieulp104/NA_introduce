@@ -1502,6 +1502,16 @@
       color: var(--brass-bright);
     }
 
+    .contact-lines small .inline-link {
+      color: var(--brass-bright);
+      font-family: var(--sans);
+      font-size: inherit;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .contact-lines small {
       display: block;
       margin-bottom: 18px;
@@ -3121,7 +3131,7 @@
           <h2 id="contactTitle">Kể cho chúng tôi việc bạn cần làm</h2>
           <div class="contact-lines">
             <a href="tel:0352472151">0352 472 151</a>
-            <small>Gọi hoặc nhắn Zalo, trả lời trong giờ hành chính</small>
+            <small>Gọi hoặc <a class="inline-link" href="https://zalo.me/0352472151" target="_blank" rel="noopener">nhắn Zalo</a>, trả lời trong giờ hành chính</small>
             <a href="mailto:hieulp3a2004@gmail.com" style="font-size: clamp(20px, 2vw, 26px);">hieulp3a2004@gmail.com</a>
           </div>
         </div>
@@ -3164,7 +3174,7 @@
           <p class="form-error" id="formError" role="alert"></p>
           <div class="form-foot">
             <button class="btn btn-solid" id="formSubmit" type="submit">Gửi yêu cầu</button>
-            <p>Chúng tôi gọi lại trong giờ hành chính.</p>
+            <p>Chúng tôi sẽ liên hệ với bạn trong giờ hành chính.</p>
           </div>
         </form>
         <div class="form-done" id="formDone" role="status" tabindex="-1" hidden>
@@ -3572,7 +3582,7 @@
 
       function showDone(lead) {
         $("formDoneText").textContent =
-          `Cảm ơn ${lead.name}. Chúng tôi sẽ gọi lại số ${lead.phone} trong giờ hành chính để trao đổi thêm.`;
+          `Cảm ơn ${lead.name}. Chúng tôi sẽ liên hệ với bạn qua số ${lead.phone} trong giờ hành chính để trao đổi thêm.`;
         contactForm.hidden = true;
         $("formDone").hidden = false;
         $("formDone").focus();
