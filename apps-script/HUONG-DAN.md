@@ -2,7 +2,7 @@
 
 Khi khách bấm **Gửi yêu cầu** trên website:
 
-1. Gmail `hieulp3a2004@gmail.com` nhận email "Khách mới: …", có nút **Gọi** và **Nhắn Zalo**.
+1. Gmail `nawebagency37@gmail.com` (team) và `hieulp3a2004@gmail.com` cùng nhận email "Khách mới: …", có nút **Gọi** và **Nhắn Zalo**. Danh sách người nhận nằm ở `NOTIFY_EMAILS` đầu file `Code.gs`.
 2. Google Sheet ghi thêm một dòng (thời gian, tên, SĐT, dịch vụ, ngân sách, mô tả, ô tích "Đã liên hệ").
 
 Cài một lần, mất khoảng 5 phút.

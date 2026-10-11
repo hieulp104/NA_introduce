@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#29251d">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="canonical" href="https://naweb.io.vn/">
@@ -162,6 +161,16 @@
       line-height: 1;
       text-decoration: none;
       pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      flex: none;
+      border-radius: 50%;
     }
 
     .nav-actions {
@@ -2415,6 +2424,12 @@
     @media (max-width: 560px) {
       .brand {
         font-size: 22px;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
       }
 
       .ticket-button {
@@ -2545,7 +2560,7 @@
 </head>
 <body data-mode="gallery" data-menu="closed">
   <header class="topbar">
-    <a class="brand" href="#top" aria-label="NA Web Agency, về đầu trang">NA Web Agency</a>
+    <a class="brand" href="#top" aria-label="NA Web Agency, về đầu trang"><img class="brand-logo" src="assets/logo.png" alt="" width="48" height="48">NA Web Agency</a>
     <div class="nav-actions">
       <a class="ticket-button" href="#lien-he">Nhận báo giá</a>
       <button class="icon-button" id="menuButton" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="menuLayer">
@@ -2994,19 +3009,19 @@
           <ul class="promises">
             <li>
               <strong>Báo giá rõ từng hạng mục</strong>
-              <span>Bạn biết mình trả tiền cho tính năng nào trước khi ký.</span>
+              <span>Mỗi tính năng đều có chi phí riêng, được thống nhất trước khi ký hợp đồng.</span>
             </li>
             <li>
-              <strong>Chia giai đoạn, trả từng phần</strong>
-              <span>Giai đoạn sau chỉ bắt đầu khi giai đoạn trước chạy ổn.</span>
+              <strong>Thanh toán theo từng giai đoạn</strong>
+              <span>Giai đoạn tiếp theo chỉ triển khai khi giai đoạn trước đã vận hành ổn định.</span>
             </li>
             <li>
-              <strong>Xem bản chạy thử trước khi nghiệm thu</strong>
-              <span>Bạn dùng thử trên điện thoại và máy tính, góp ý rồi mới chốt.</span>
+              <strong>Dùng thử trước khi nghiệm thu</strong>
+              <span>Khách hàng trải nghiệm trên điện thoại và máy tính, góp ý chỉnh sửa trước khi nghiệm thu.</span>
             </li>
             <li>
-              <strong>Hỗ trợ qua Zalo sau bàn giao</strong>
-              <span>Sửa lỗi, cập nhật bảo mật và sao lưu với gói bảo trì hằng năm.</span>
+              <strong>Hỗ trợ sau bàn giao</strong>
+              <span>Gói bảo trì hằng năm bao gồm sửa lỗi, cập nhật bảo mật và sao lưu dữ liệu, hỗ trợ trực tiếp qua Zalo.</span>
             </li>
           </ul>
         </div>
@@ -3137,7 +3152,7 @@
           <div class="contact-lines">
             <a href="tel:0352472151">0352 472 151</a>
             <small>Gọi hoặc <a class="inline-link" href="https://zalo.me/0352472151" target="_blank" rel="noopener">nhắn Zalo</a>, trả lời trong giờ hành chính</small>
-            <a href="mailto:hieulp3a2004@gmail.com" style="font-size: clamp(20px, 2vw, 26px);">hieulp3a2004@gmail.com</a>
+            <a href="mailto:nawebagency37@gmail.com" style="font-size: clamp(20px, 2vw, 26px);">nawebagency37@gmail.com</a>
           </div>
         </div>
         <form class="form" id="contactForm" novalidate>
@@ -3582,7 +3597,7 @@
           lead.note
         ].join("\n");
         window.location.href =
-          `mailto:hieulp3a2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+          `mailto:nawebagency37@gmail.com,hieulp3a2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
       }
 
       function showDone(lead) {

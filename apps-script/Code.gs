@@ -2,13 +2,13 @@
  * NA Web Agency: nhận yêu cầu từ form liên hệ trên website.
  *
  * Mỗi yêu cầu sẽ:
- *   1. Gửi email về OWNER_EMAIL.
+ *   1. Gửi email về NOTIFY_EMAILS (Gmail của team và của Hiếu).
  *   2. Ghi thêm một dòng vào Google Sheet chứa script này (nếu có).
  *
  * Cách cài: xem apps-script/HUONG-DAN.md
  */
 
-const OWNER_EMAIL = 'hieulp3a2004@gmail.com';
+const NOTIFY_EMAILS = ['nawebagency37@gmail.com', 'hieulp3a2004@gmail.com'];
 const TIMEZONE = 'Asia/Ho_Chi_Minh';
 const SHEET_NAME = 'Yêu cầu';
 
@@ -95,7 +95,7 @@ function sendMail(time, lead) {
     '</p></div>';
 
   MailApp.sendEmail({
-    to: OWNER_EMAIL,
+    to: NOTIFY_EMAILS.join(','),
     subject: subject,
     body: body,
     htmlBody: htmlBody,
