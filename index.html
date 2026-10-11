@@ -697,6 +697,7 @@
       padding: 0 24px;
       border: 1px solid transparent;
       border-radius: 999px;
+      background: transparent;
       font-size: 15px;
       font-weight: 600;
       text-decoration: none;
@@ -1579,6 +1580,54 @@
 
     .form-error:empty {
       display: none;
+    }
+
+    .form-error a {
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    .hp-field {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .btn[aria-busy="true"] {
+      opacity: .7;
+      cursor: progress;
+    }
+
+    .form-done {
+      align-self: center;
+      padding: clamp(28px, 4vw, 44px);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--sage);
+      border-radius: 4px 16px 16px 4px;
+      background: rgba(52, 48, 37, .6);
+      outline: 0;
+    }
+
+    .form[hidden],
+    .form-done[hidden] {
+      display: none;
+    }
+
+    .form-done h3 {
+      margin: 0 0 10px;
+      line-height: 1.15;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(26px, 2.6vw, 34px);
+      font-weight: 500;
+    }
+
+    .form-done p {
+      max-width: 46ch;
+      margin: 0 0 24px;
+      color: var(--muted);
     }
 
     .site-footer {
@@ -3108,12 +3157,21 @@
             <label for="fNote">Mô tả ngắn</label>
             <textarea id="fNote" name="note" placeholder="Ví dụ: cửa hàng vật tư, đang quản lý kho bằng Excel, muốn xem tồn kho trên điện thoại."></textarea>
           </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="fWebsite">Website</label>
+            <input id="fWebsite" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <p class="form-error" id="formError" role="alert"></p>
           <div class="form-foot">
-            <button class="btn btn-solid" type="submit">Gửi yêu cầu</button>
-            <p>Nút này mở ứng dụng email với nội dung bạn vừa điền.</p>
+            <button class="btn btn-solid" id="formSubmit" type="submit">Gửi yêu cầu</button>
+            <p>Chúng tôi gọi lại trong giờ hành chính.</p>
           </div>
         </form>
+        <div class="form-done" id="formDone" role="status" tabindex="-1" hidden>
+          <h3>Đã nhận yêu cầu của bạn</h3>
+          <p id="formDoneText"></p>
+          <button class="btn btn-line" id="formAgain" type="button">Gửi yêu cầu khác</button>
+        </div>
       </div>
     </section>
   </main>
@@ -3474,29 +3532,98 @@
         else closeDetail();
       });
 
-      $("contactForm").addEventListener("submit", (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        const name = form.name.value.trim();
-        const phone = form.phone.value.trim();
-        const error = $("formError");
-        if (!name || !phone) {
-          error.textContent = "Điền tên và số điện thoại để chúng tôi gọi lại cho bạn.";
-          (name ? form.phone : form.name).focus();
-          return;
-        }
-        error.textContent = "";
-        const subject = `Yêu cầu báo giá: ${form.service.value}`;
+      /* Dán đường link Web App của Google Apps Script vào đây (xem apps-script/HUONG-DAN.md).
+         Để trống thì form tạm mở ứng dụng email của khách như trước. */
+      const FORM_ENDPOINT = "";
+
+      const contactForm = $("contactForm");
+      const formError = $("formError");
+      const formSubmit = $("formSubmit");
+      const fallbackHtml =
+        'Gọi <a href="tel:0352472151">0352 472 151</a> hoặc ' +
+        '<a href="https://zalo.me/0352472151" target="_blank" rel="noopener">nhắn Zalo</a> để chúng tôi hỗ trợ ngay.';
+
+      function readLead() {
+        const f = contactForm.elements;
+        return {
+          name: f["name"].value.trim(),
+          phone: f["phone"].value.trim(),
+          service: f["service"].value,
+          budget: f["budget"].value,
+          note: f["note"].value.trim(),
+          website: f["website"].value,
+          page: location.href
+        };
+      }
+
+      function openMailApp(lead) {
+        const subject = `Yêu cầu báo giá: ${lead.service}`;
         const text = [
-          `Tên: ${name}`,
-          `Điện thoại/Zalo: ${phone}`,
-          `Cần làm: ${form.service.value}`,
-          `Ngân sách: ${form.budget.value}`,
+          `Tên: ${lead.name}`,
+          `Điện thoại/Zalo: ${lead.phone}`,
+          `Cần làm: ${lead.service}`,
+          `Ngân sách: ${lead.budget}`,
           "",
-          form.note.value.trim()
+          lead.note
         ].join("\n");
         window.location.href =
           `mailto:hieulp3a2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      }
+
+      function showDone(lead) {
+        $("formDoneText").textContent =
+          `Cảm ơn ${lead.name}. Chúng tôi sẽ gọi lại số ${lead.phone} trong giờ hành chính để trao đổi thêm.`;
+        contactForm.hidden = true;
+        $("formDone").hidden = false;
+        $("formDone").focus();
+      }
+
+      contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const lead = readLead();
+        const f = contactForm.elements;
+        if (!lead.name) {
+          formError.textContent = "Điền tên để chúng tôi biết nên xưng hô thế nào.";
+          f["name"].focus();
+          return;
+        }
+        if (!/^[0-9+().\s-]{9,20}$/.test(lead.phone)) {
+          formError.textContent = "Số điện thoại chưa đúng. Kiểm tra lại giúp chúng tôi, ví dụ 0912 345 678.";
+          f["phone"].focus();
+          return;
+        }
+        formError.textContent = "";
+
+        if (!FORM_ENDPOINT) {
+          openMailApp(lead);
+          return;
+        }
+
+        formSubmit.disabled = true;
+        formSubmit.setAttribute("aria-busy", "true");
+        formSubmit.textContent = "Đang gửi…";
+        try {
+          const response = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            body: new URLSearchParams(lead)
+          });
+          const result = await response.json();
+          if (!result.ok) throw new Error(result.error || "rejected");
+          showDone(lead);
+          contactForm.reset();
+        } catch (err) {
+          formError.innerHTML = "Chưa gửi được yêu cầu, có thể do mạng. " + fallbackHtml;
+        } finally {
+          formSubmit.disabled = false;
+          formSubmit.removeAttribute("aria-busy");
+          formSubmit.textContent = "Gửi yêu cầu";
+        }
+      });
+
+      $("formAgain").addEventListener("click", () => {
+        $("formDone").hidden = true;
+        contactForm.hidden = false;
+        contactForm.elements["name"].focus();
       });
     })();
   </script>
