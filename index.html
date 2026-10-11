@@ -1,0 +1,3718 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#29251d">
+  <title>NA Web Agency | Website và phần mềm quản lý cho doanh nghiệp nhỏ</title>
+  <meta
+    name="description"
+    content="NA Web Agency làm website giới thiệu, web bán hàng, phần mềm quản lý và web học tập. Báo giá rõ từng hạng mục, chia giai đoạn, trả từng phần. Gọi 0352 472 151."
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="NA Web Agency | Website và phần mềm quản lý">
+  <meta property="og:description" content="Website, phần mềm quản lý và web học tập làm riêng cho việc kinh doanh của bạn. Báo giá rõ, chia giai đoạn, trả từng phần.">
+  <meta property="og:image" content="assets/cover-3.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #29251d;
+      --ink-deep: #1d1a15;
+      --ink-raised: #343025;
+      --brass: #c3a47b;
+      --brass-bright: #dbc39c;
+      --text: #eee2ca;
+      --muted: #c5b79e;
+      --faint: #9d917a;
+      --sage: #89946f;
+      --moss: #5f684f;
+      --paper: #eadfc7;
+      --rule: rgba(220, 200, 164, .16);
+      --display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      --sans: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+      --ease: cubic-bezier(.2, .78, .2, 1);
+      --gutter: max(16px, 3.2vw);
+      --mx: 0px;
+      --my: 0px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    html,
+    body {
+      width: 100%;
+      margin: 0;
+      background: var(--ink);
+    }
+
+    body {
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 901px) {
+      body[data-mode="detail"] {
+        overflow: hidden;
+      }
+    }
+
+    button,
+    a,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--brass-bright);
+      outline-offset: 4px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    /* ---------- Hero stage (based on ThreeUI bestsellers showcase, MIT) ---------- */
+
+    .stage {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 49% 84%, rgba(117, 102, 71, .2), transparent 34%),
+        radial-gradient(circle at 14% 4%, rgba(100, 112, 77, .12), transparent 28%),
+        linear-gradient(180deg, #343025 0%, var(--ink) 48%, #211e18 100%);
+    }
+
+    .stage::after {
+      content: "";
+      position: absolute;
+      z-index: 30;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 50;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 22px var(--gutter);
+      pointer-events: none;
+      transition: background-color 300ms ease, padding 300ms var(--ease);
+    }
+
+    body[data-scrolled="true"] .topbar {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      background: rgba(33, 30, 24, .86);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(23px, 2.1vw, 30px);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1;
+      text-decoration: none;
+      pointer-events: auto;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .icon-button,
+    .ticket-button,
+    .close-button,
+    .pill,
+    .book-card {
+      border: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .icon-button,
+    .ticket-button {
+      height: 48px;
+      border: 1px solid rgba(61, 49, 35, .18);
+      background: var(--paper);
+      color: #30291f;
+      box-shadow: 0 8px 26px rgba(28, 22, 14, .13);
+      transition: transform 240ms var(--ease), background-color 240ms ease;
+    }
+
+    .icon-button {
+      display: grid;
+      width: 48px;
+      place-items: center;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .menu-glyph {
+      position: relative;
+      width: 14px;
+      height: 10px;
+    }
+
+    .menu-glyph::before,
+    .menu-glyph::after {
+      content: "";
+      position: absolute;
+      left: 1px;
+      width: 12px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform 300ms var(--ease), top 300ms var(--ease);
+    }
+
+    .menu-glyph::before {
+      top: 2px;
+    }
+
+    .menu-glyph::after {
+      top: 7px;
+    }
+
+    [data-menu="open"] .menu-glyph::before {
+      top: 5px;
+      transform: rotate(45deg);
+    }
+
+    [data-menu="open"] .menu-glyph::after {
+      top: 5px;
+      transform: rotate(-45deg);
+    }
+
+    .ticket-button {
+      display: inline-grid;
+      padding: 0 24px;
+      place-items: center;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .icon-button:hover,
+    .ticket-button:hover {
+      transform: translateY(-2px);
+      background: #f7edd9;
+    }
+
+    .hero-word {
+      position: absolute;
+      z-index: 1;
+      top: 11.5vh;
+      left: 50%;
+      margin: 0;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(170px, 21vw, 310px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.07em;
+      line-height: .84;
+      white-space: nowrap;
+      transform: translate3d(calc(-50% + var(--mx) * -.12), calc(var(--my) * -.12), 0);
+      translate: 0 var(--word-y, 0px);
+      opacity: var(--word-o, 1);
+      transition: opacity 700ms ease, filter 700ms ease, transform 900ms var(--ease);
+      user-select: none;
+    }
+
+    .gallery {
+      position: absolute;
+      z-index: 5;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .gallery-inner {
+      position: absolute;
+      inset: 0;
+      perspective: 1400px;
+      transform-origin: 50% var(--rise-origin, 30%);
+      translate: 0 var(--rise-y, 0px);
+      scale: var(--rise-scale, 1);
+    }
+
+    /* The hero is pinned while the books rise into full view */
+    .hero-scroll {
+      position: relative;
+      height: 175svh;
+    }
+
+    .hero-scroll > .stage {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+    }
+
+    [data-mode="detail"] .hero-scroll {
+      height: auto;
+    }
+
+    [data-mode="detail"] .hero-scroll > .stage {
+      position: relative;
+      height: auto;
+    }
+
+    [data-mode="detail"] .gallery {
+      bottom: 0;
+      overflow: visible;
+    }
+
+    [data-mode="detail"] .gallery-inner {
+      translate: 0 0;
+      scale: 1;
+    }
+
+    .book-card {
+      --hover-y: 0px;
+      --local-x: 0px;
+      --local-y: 0px;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--w);
+      aspect-ratio: .672 / 1;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+      transform:
+        translate3d(calc(-50% + var(--local-x)), calc(var(--hover-y) + var(--local-y)), 0)
+        rotate(var(--r))
+        rotateY(var(--yaw));
+      transform-style: preserve-3d;
+      transition:
+        left 1100ms var(--ease),
+        top 1100ms var(--ease),
+        width 1100ms var(--ease),
+        opacity 500ms ease,
+        filter 500ms ease,
+        transform 520ms var(--ease);
+      will-change: transform;
+    }
+
+    .book-card[data-book="web"] {
+      --x: 23.2%;
+      --y: 40.5%;
+      --w: min(30.5vw, 435px);
+      --r: -8deg;
+      --yaw: -7deg;
+      z-index: 1;
+    }
+
+    .book-card[data-book="quanly"] {
+      --x: 50%;
+      --y: 32.2%;
+      --w: min(33vw, 470px);
+      --r: .8deg;
+      --yaw: -3deg;
+      z-index: 3;
+    }
+
+    .book-card[data-book="hoctap"] {
+      --x: 77%;
+      --y: 42%;
+      --w: min(30.5vw, 435px);
+      --r: 8deg;
+      --yaw: 7deg;
+      z-index: 2;
+    }
+
+    .book-card:hover,
+    .book-card[data-hovered="true"] {
+      --hover-y: -28px;
+      z-index: 8;
+    }
+
+    .book {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 800ms var(--ease);
+    }
+
+    .book-card:hover .book {
+      transform: scale(1.035) rotateX(-1.5deg);
+    }
+
+    .book-back,
+    .page-block,
+    .page-fan,
+    .front-cover,
+    .book-shadow {
+      position: absolute;
+      inset: 0;
+      border-radius: 3px 7px 7px 3px;
+    }
+
+    .book-shadow {
+      z-index: -2;
+      inset: 5% -4% -2% 4%;
+      border-radius: 12px;
+      background: rgba(24, 18, 10, .7);
+      filter: blur(22px);
+      opacity: .72;
+      transform: translate3d(18px, 28px, -60px);
+    }
+
+    .book-back {
+      z-index: 0;
+      background: var(--cover-color);
+      box-shadow: 0 18px 30px rgba(24, 18, 10, .4);
+      transform: translate3d(7px, 1px, -26px);
+    }
+
+    .page-block {
+      z-index: 1;
+      inset: 1.7% 1.4% 1.7% 3.8%;
+      border: 1px solid rgba(84, 68, 45, .25);
+      border-radius: 2px 5px 5px 2px;
+      background:
+        repeating-linear-gradient(0deg, rgba(105, 86, 58, .14) 0, rgba(105, 86, 58, .14) 1px, transparent 1px, transparent 2.8px),
+        linear-gradient(90deg, #cfc1a4 0%, #f2e8d2 14%, #e7dac0 87%, #cbb894 100%);
+      box-shadow: 7px 5px 16px rgba(31, 23, 13, .26);
+      transform: translate3d(7px, 1px, -12px);
+      transition: transform 1100ms var(--ease), inset 1100ms var(--ease);
+    }
+
+    .page-block::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      right: 1px;
+      left: 1px;
+      height: 8px;
+      border-radius: 2px 4px 0 0;
+      background: repeating-linear-gradient(90deg, #d9cbae 0, #d9cbae 2px, #f2e7cf 2px, #f2e7cf 5px);
+      transform: skewX(-8deg);
+      transform-origin: bottom left;
+    }
+
+    .page-block::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -7px;
+      width: 8px;
+      height: 100%;
+      border-radius: 0 4px 4px 0;
+      background: repeating-linear-gradient(0deg, #cbb995 0, #cbb995 1px, #eee3cd 1px, #eee3cd 3px);
+      box-shadow: 3px 2px 7px rgba(35, 26, 14, .18);
+      transform: skewY(-2deg);
+      transform-origin: left center;
+    }
+
+    .page-fan {
+      z-index: 2;
+      inset: 2.4% 2% 2.4% 4.3%;
+      pointer-events: none;
+      transform-style: preserve-3d;
+    }
+
+    .page-fan i {
+      position: absolute;
+      inset: 0;
+      display: block;
+      border: 1px solid rgba(102, 83, 55, .22);
+      border-radius: 2px 5px 5px 2px;
+      background:
+        linear-gradient(90deg, rgba(116, 91, 56, .22), transparent 9%),
+        repeating-linear-gradient(0deg, #f0e6d0 0, #f0e6d0 2px, #e6d8ba 2px, #e6d8ba 3px);
+      box-shadow: 3px 5px 10px rgba(37, 28, 16, .08);
+      opacity: 0;
+      transform-origin: 1.5% center;
+      transition: opacity 500ms ease, transform 1200ms var(--ease);
+    }
+
+    .front-cover {
+      z-index: 3;
+      overflow: hidden;
+      border: 1px solid rgba(238, 224, 194, .2);
+      background-color: var(--cover-color);
+      background-image: var(--cover);
+      background-position: center;
+      background-size: cover;
+      box-shadow:
+        0 25px 38px rgba(24, 18, 10, .4),
+        inset -12px 0 18px rgba(0, 0, 0, .16),
+        inset 4px 0 9px rgba(255, 255, 255, .12);
+      transform: translate3d(0, 0, 12px);
+      transform-origin: 1.5% center;
+      transform-style: preserve-3d;
+      transition: transform 1200ms var(--ease), box-shadow 600ms ease;
+    }
+
+    .front-cover::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 5.5%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, .35), rgba(255, 255, 255, .08) 35%, rgba(0, 0, 0, .12) 75%, transparent);
+      mix-blend-mode: multiply;
+      opacity: .8;
+    }
+
+    .cover-motion {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 420ms ease;
+      pointer-events: none;
+    }
+
+    .cover-motion[data-ready="true"] {
+      opacity: 1;
+    }
+
+    .cover-copy {
+      position: absolute;
+      z-index: 2;
+      inset: 5.8% 7.5% 5.5%;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      align-content: start;
+      color: var(--cover-ink);
+      font-family: var(--display);
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(241, 226, 196, .24);
+    }
+
+    .cover-kicker {
+      font-size: clamp(9px, .78vw, 12px);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .cover-title {
+      margin-top: 2.2%;
+      font-size: clamp(30px, 3.7vw, 56px);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      line-height: .92;
+    }
+
+    .cover-subtitle {
+      margin-top: 4%;
+      font-size: clamp(10px, 1.05vw, 15px);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .cover-footer {
+      align-self: end;
+      padding-top: 3%;
+      border-top: 1px solid currentColor;
+      font-family: var(--sans);
+      font-size: clamp(7px, .62vw, 10px);
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .book-card[data-book="web"] .cover-copy {
+      --cover-ink: #293024;
+    }
+
+    .book-card[data-book="quanly"] .cover-copy {
+      --cover-ink: #31291e;
+    }
+
+    .book-card[data-book="hoctap"] .cover-copy {
+      --cover-ink: #4b281a;
+    }
+
+    .open-badge {
+      position: absolute;
+      z-index: 6;
+      top: 47%;
+      left: 50%;
+      display: grid;
+      width: 104px;
+      height: 70px;
+      place-items: center;
+      color: #312a21;
+      background: #efe3ca;
+      clip-path: polygon(
+        3% 22%, 10% 8%, 25% 7%, 38% 1%, 51% 6%, 66% 2%,
+        77% 10%, 92% 11%, 96% 26%, 100% 39%, 95% 52%, 99% 67%,
+        88% 79%, 83% 93%, 68% 94%, 55% 100%, 42% 94%, 27% 98%,
+        17% 88%, 4% 84%, 5% 69%, 0 57%, 5% 43%, 1% 34%
+      );
+      font-family: var(--display);
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 600;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(.76) rotate(-3deg);
+      transition: opacity 260ms ease, transform 420ms var(--ease);
+      pointer-events: none;
+    }
+
+    .book-card:hover .open-badge,
+    .book-card[data-hovered="true"] .open-badge,
+    .book-card:focus-visible .open-badge {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(-3deg);
+    }
+
+    .book-card:focus-visible {
+      outline: 0;
+    }
+
+    .book-card:focus-visible .open-badge {
+      filter: drop-shadow(0 0 0 2px var(--brass-bright)) drop-shadow(0 7px 12px rgba(29, 22, 14, .34));
+      outline: 2px solid var(--brass-bright);
+    }
+
+    /* Hero hint: the only text on the stage besides the wordmark */
+
+    .hero-hint {
+      position: absolute;
+      z-index: 10;
+      bottom: 28px;
+      left: 50%;
+      padding: 10px 20px;
+      border: 1px solid rgba(238, 226, 202, .14);
+      border-radius: 999px;
+      background: rgba(41, 37, 29, .72);
+      color: var(--paper);
+      font-size: 14px;
+      white-space: nowrap;
+      box-shadow: 0 10px 30px rgba(20, 16, 10, .35);
+      backdrop-filter: blur(10px);
+      transform: translateX(-50%);
+      transition: opacity 400ms ease;
+      pointer-events: none;
+    }
+
+    [data-mode="detail"] .hero-hint,
+    body[data-scrolled="true"] .hero-hint {
+      opacity: 0;
+    }
+
+    /* Intro: the value line right after the books */
+
+    .intro {
+      padding: clamp(72px, 9vw, 128px) var(--gutter) clamp(64px, 8vw, 112px);
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      align-items: end;
+      gap: 32px clamp(32px, 6vw, 96px);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .intro h1 {
+      max-width: 20ch;
+      text-wrap: balance;
+      margin: 0;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(38px, 4.6vw, 68px);
+      font-weight: 500;
+      letter-spacing: -.025em;
+      line-height: 1.04;
+    }
+
+    .intro p {
+      max-width: 42ch;
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 220ms var(--ease), background-color 220ms ease, border-color 220ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-solid {
+      background: var(--brass);
+      color: #2a2219;
+    }
+
+    .btn-solid:hover {
+      background: var(--brass-bright);
+    }
+
+    .btn-line {
+      border-color: rgba(220, 200, 164, .4);
+      color: var(--paper);
+    }
+
+    .btn-line:hover {
+      border-color: var(--paper);
+    }
+
+    /* ---------- Detail panel ---------- */
+
+    .detail-panel {
+      position: absolute;
+      z-index: 12;
+      top: 14%;
+      right: 4.5%;
+      bottom: 190px;
+      display: flex;
+      flex-direction: column;
+      width: min(47.5%, 650px);
+      opacity: 0;
+      transition: opacity 520ms ease 280ms;
+      pointer-events: none;
+    }
+
+    .detail-title {
+      margin: 0 0 20px;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(46px, 5vw, 76px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: .98;
+    }
+
+    .detail-description {
+      max-width: 60ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.2vw, 17px);
+      line-height: 1.65;
+    }
+
+    .detail-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 0 22px 76px 0;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 76px), transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 76px), transparent 100%);
+      scrollbar-color: rgba(195, 164, 123, .7) rgba(73, 66, 49, .35);
+      scrollbar-width: thin;
+    }
+
+    .detail-scroll:focus-visible {
+      border-radius: 8px;
+      outline: 1px solid rgba(219, 195, 156, .7);
+      outline-offset: 8px;
+    }
+
+    .doc-section {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .doc-label {
+      margin: 0 0 14px;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: 19px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .gets {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gets li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .gets li::before {
+      content: "";
+      position: absolute;
+      top: .62em;
+      left: 2px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .doc-steps {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .doc-steps li {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      counter-increment: step;
+    }
+
+    .doc-steps li::before {
+      content: counter(step);
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    .doc-step-copy {
+      display: grid;
+      gap: 2px;
+    }
+
+    .doc-step-copy strong {
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .doc-step-copy span,
+    .doc-note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .pkg {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pkg li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2px 16px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--rule);
+    }
+
+    .pkg li:last-child {
+      border-bottom: 0;
+    }
+
+    .pkg-name {
+      color: var(--paper);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .pkg-price {
+      color: var(--brass-bright);
+      font-size: 15px;
+      font-weight: 600;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .pkg-time {
+      grid-column: 1 / -1;
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .doc-note {
+      margin: 0;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: max-content 1px 1fr;
+      align-items: center;
+      gap: clamp(16px, 2vw, 24px);
+      color: var(--brass);
+    }
+
+    .meta-price {
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 26px;
+      background: rgba(220, 200, 164, .28);
+    }
+
+    .meta-time {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .detail-rule {
+      height: 1px;
+      margin: 10px 8px 14px;
+      border: 0;
+      background: rgba(220, 200, 164, .24);
+    }
+
+    .bottom-dock {
+      position: fixed;
+      z-index: 24;
+      right: 4.5%;
+      bottom: 28px;
+      width: min(47.5%, 650px);
+    }
+
+    .bottom-dock .meta-row {
+      margin: 0 10px;
+    }
+
+    .action-rail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid rgba(238, 226, 202, .07);
+      border-radius: 32px;
+      background: rgba(64, 58, 43, .9);
+      box-shadow: 0 16px 32px rgba(26, 20, 12, .2);
+      backdrop-filter: blur(12px);
+    }
+
+    .pill {
+      display: inline-flex;
+      flex: 1 1 0;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 56px;
+      padding: 0 16px;
+      border-radius: 24px;
+      background: var(--paper);
+      color: #2e261d;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 220ms var(--ease), filter 220ms ease;
+    }
+
+    .pill:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .pill.primary {
+      background: var(--brass);
+    }
+
+    .pill.quiet {
+      background: #565d45;
+      color: #f1e6cf;
+    }
+
+    .close-button {
+      position: absolute;
+      z-index: 52;
+      top: 30px;
+      left: 50%;
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .26);
+      border-radius: 50%;
+      background: rgba(42, 37, 28, .28);
+      color: var(--paper);
+      cursor: pointer;
+      font-size: 27px;
+      font-weight: 200;
+      opacity: 0;
+      transform: translate3d(-50%, -18px, 0) rotate(-45deg);
+      transition: opacity 400ms ease, transform 620ms var(--ease), background 220ms ease;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .close-button:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .menu-layer {
+      position: fixed;
+      z-index: 40;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 50% 47%, rgba(111, 91, 61, .22), transparent 42%),
+        rgba(30, 27, 21, .96);
+      opacity: 0;
+      transition: opacity 460ms ease;
+      pointer-events: none;
+      backdrop-filter: blur(18px);
+    }
+
+    .menu-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .menu-link {
+      display: inline-block;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 100px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.08;
+      text-decoration: none;
+      transform: translateY(24px);
+      transition: color 200ms ease, transform 500ms var(--ease);
+    }
+
+    .menu-link:hover {
+      color: var(--paper);
+    }
+
+    [data-menu="open"] .menu-layer {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    [data-menu="open"] .menu-link {
+      transform: translateY(0);
+    }
+
+    [data-mode="detail"] .hero-word {
+      opacity: 0;
+      filter: blur(16px);
+      transform: translate3d(-50%, -34px, 0) scale(.9);
+    }
+
+    [data-mode="detail"] .book-card:not(.selected) {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translate3d(-50%, 60vh, -200px) rotate(var(--r)) scale(.8);
+      pointer-events: none;
+    }
+
+    [data-mode="detail"] .book-card.selected {
+      --hover-y: 0px;
+      --local-x: 0px;
+      --local-y: 0px;
+      left: 27%;
+      top: 50%;
+      width: min(30vw, 415px);
+      z-index: 14;
+      cursor: default;
+      transform: translate3d(-50%, -50%, 0) rotate(-3deg);
+      pointer-events: none;
+    }
+
+    [data-mode="detail"] .book-card.selected .book {
+      transform: scale(1.02) rotateX(var(--detail-pitch, 0deg)) rotateY(var(--detail-yaw, -5deg));
+      transition-duration: 170ms;
+    }
+
+    [data-mode="detail"] .book-card.selected .front-cover {
+      box-shadow:
+        25px 26px 44px rgba(29, 21, 11, .34),
+        inset -12px 0 18px rgba(0, 0, 0, .13),
+        inset 4px 0 9px rgba(255, 255, 255, .1);
+      transform: translate3d(0, 0, 18px) rotateY(-29deg);
+    }
+
+    [data-mode="detail"] .book-card.selected .page-block {
+      inset: 1.9% 1.5% 1.9% 4.4%;
+      transform: translate3d(6px, 1px, -11px);
+    }
+
+    [data-mode="detail"] .book-card.selected .page-fan i {
+      opacity: 1;
+    }
+
+    [data-mode="detail"] .book-card.selected .page-fan i:nth-child(1) {
+      transform: translate3d(0, 0, 10px) rotateY(-4deg);
+    }
+
+    [data-mode="detail"] .book-card.selected .page-fan i:nth-child(2) {
+      transform: translate3d(0, 0, 11px) rotateY(-8deg);
+    }
+
+    [data-mode="detail"] .book-card.selected .page-fan i:nth-child(3) {
+      transform: translate3d(0, 0, 12px) rotateY(-12deg);
+    }
+
+    [data-mode="detail"] .book-card.selected .page-fan i:nth-child(4) {
+      transform: translate3d(0, 0, 13px) rotateY(-16deg);
+    }
+
+    [data-mode="detail"] .book-card.selected .open-badge {
+      opacity: 0;
+    }
+
+    [data-mode="detail"] .detail-panel {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    [data-mode="gallery"] .detail-panel {
+      transition-duration: 160ms;
+      transition-delay: 0ms;
+    }
+
+    [data-mode="detail"] .close-button {
+      opacity: 1;
+      transform: translate3d(-50%, 0, 0) rotate(0);
+      pointer-events: auto;
+    }
+
+    /* ---------- Sections below the hero ---------- */
+
+    .section {
+      padding: clamp(72px, 9vw, 132px) var(--gutter);
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(220px, 4fr) 8fr;
+      gap: clamp(32px, 6vw, 96px);
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      align-self: start;
+      position: sticky;
+      top: 104px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(36px, 4vw, 58px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.03em;
+      line-height: 1.02;
+    }
+
+    .section-head p {
+      max-width: 34ch;
+      margin: 18px 0 0;
+      color: var(--muted);
+    }
+
+    /* Work */
+
+    .work-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .work-list li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .work-list li:first-child {
+      padding-top: 4px;
+    }
+
+    .work-list h3 {
+      margin: 0;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(26px, 2.4vw, 34px);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+    }
+
+    .work-for {
+      align-self: center;
+      color: var(--faint);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .work-list p {
+      grid-column: 1 / -1;
+      max-width: 62ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .work-meta {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 18px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .status::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 4px rgba(137, 148, 111, .2);
+    }
+
+    .status[data-state="demo"]::before {
+      background: var(--brass);
+      box-shadow: 0 0 0 4px rgba(195, 164, 123, .2);
+    }
+
+    .stack {
+      color: var(--faint);
+    }
+
+    .promises {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px 40px;
+      margin: 48px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .promises strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--paper);
+      font-weight: 600;
+    }
+
+    .promises span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Process: a real sequence, so it is numbered */
+
+    .process {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: proc;
+    }
+
+    .process li {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 4px 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+      counter-increment: proc;
+    }
+
+    .process li:first-child {
+      padding-top: 4px;
+    }
+
+    .process li::before {
+      content: counter(proc);
+      grid-row: span 2;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: 48px;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .process h3 {
+      margin: 0;
+      color: var(--paper);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .process .when {
+      color: var(--faint);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .process p {
+      grid-column: 2 / -1;
+      max-width: 60ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Pricing as a table of contents */
+
+    .toc-group + .toc-group {
+      margin-top: 48px;
+    }
+
+    .toc-group h3 {
+      margin: 0 0 6px;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .toc-group > p {
+      margin: 0 0 14px;
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .toc {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .toc li {
+      padding: 12px 0;
+    }
+
+    .toc-line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .toc-name {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .toc-dots {
+      flex: 1;
+      min-width: 24px;
+      border-bottom: 2px dotted rgba(220, 200, 164, .32);
+      transform: translateY(-4px);
+    }
+
+    .toc-price {
+      color: var(--brass-bright);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .toc-detail {
+      max-width: 62ch;
+      margin: 4px 0 0;
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .price-note {
+      max-width: 62ch;
+      margin: 48px 0 0;
+      padding: 20px 24px;
+      border-left: 3px solid var(--sage);
+      background: rgba(52, 48, 37, .6);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .price-note strong {
+      color: var(--paper);
+    }
+
+    /* FAQ */
+
+    .faq details {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .faq details:first-child summary {
+      padding-top: 4px;
+    }
+
+    .faq summary {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 0;
+      color: var(--paper);
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: "+";
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: 28px;
+      line-height: 1;
+      transition: transform 300ms var(--ease);
+    }
+
+    .faq details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq details p {
+      max-width: 62ch;
+      margin: -6px 0 24px;
+      color: var(--muted);
+    }
+
+    /* Contact */
+
+    .contact {
+      background:
+        radial-gradient(circle at 80% 0%, rgba(137, 148, 111, .14), transparent 40%),
+        var(--ink-deep);
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 6px;
+      margin: 32px 0 0;
+    }
+
+    .contact-lines a {
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(30px, 3.4vw, 46px);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-lines a:hover {
+      color: var(--brass-bright);
+    }
+
+    .contact-lines small {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--faint);
+      font-family: var(--sans);
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 16px;
+      border: 1px solid rgba(220, 200, 164, .26);
+      border-radius: 12px;
+      background: rgba(52, 48, 37, .7);
+      color: var(--paper);
+      font-size: 16px;
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .field input:focus-visible,
+    .field select:focus-visible,
+    .field textarea:focus-visible {
+      outline: 2px solid var(--brass-bright);
+      outline-offset: 1px;
+    }
+
+    .form-foot {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 20px;
+    }
+
+    .form-foot p {
+      margin: 0;
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .form-error {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: #e3b7a0;
+      font-size: 14px;
+    }
+
+    .form-error:empty {
+      display: none;
+    }
+
+    .site-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 32px;
+      padding: 32px var(--gutter) 40px;
+      border-top: 1px solid var(--rule);
+      background: var(--ink-deep);
+      color: var(--faint);
+      font-size: 14px;
+    }
+
+    .site-footer a {
+      color: var(--muted);
+    }
+
+    /* ---------- Project sketchbook ---------- */
+
+    .book-section {
+      overflow: hidden;
+    }
+
+    .book-head {
+      max-width: 1120px;
+      margin: 0 auto clamp(36px, 5vw, 64px);
+      text-align: center;
+    }
+
+    .book-head h2 {
+      margin: 0;
+      color: var(--brass);
+      font-family: var(--display);
+      font-size: clamp(40px, 5vw, 72px);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+
+    .book-head p {
+      max-width: 46ch;
+      margin: 16px auto 0;
+      color: var(--muted);
+    }
+
+    .sbk {
+      --paper-pg: #efe6d2;
+      --pg-ink: #2b2721;
+      --pg-soft: rgba(43, 39, 33, .62);
+      --pg-faint: rgba(43, 39, 33, .4);
+      --pg-rule: rgba(43, 39, 33, .14);
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      perspective: 2400px;
+      perspective-origin: 50% 40%;
+      outline: 0;
+    }
+
+    .sbk:focus-visible .sbk-spread {
+      outline: 2px solid var(--brass-bright);
+      outline-offset: 10px;
+    }
+
+    .sbk-tilt {
+      position: relative;
+      transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transform-style: preserve-3d;
+      transition: transform 700ms var(--ease);
+    }
+
+    /* the book rests on the desk: a soft pool of shadow, nothing with an edge */
+    .sbk-cast {
+      position: absolute;
+      inset: 8% 4% -5%;
+      background: radial-gradient(50% 50% at 50% 60%, rgba(10, 7, 3, .62), rgba(10, 7, 3, 0) 72%);
+      filter: blur(24px);
+      opacity: calc(1 - var(--shade, 0) * .3);
+      pointer-events: none;
+    }
+
+    .sbk-spread {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      aspect-ratio: 1.5;
+      container-type: inline-size;
+      transform-style: preserve-3d;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+      transition: opacity 220ms ease, translate 220ms var(--ease);
+    }
+
+    .sbk-spread:active {
+      cursor: grabbing;
+    }
+
+    .sbk-spread.is-swapping {
+      opacity: 0;
+      translate: 0 10px;
+    }
+
+    .sbk-slot,
+    .leaf-face {
+      position: relative;
+      min-width: 0;
+    }
+
+    .sbk-slot > .pg,
+    .leaf-face > .pg {
+      height: 100%;
+    }
+
+    /* page stack under each side, so the book has thickness */
+    .sbk-slot.left {
+      box-shadow: -3px 3px 0 #ddd0b2, -6px 6px 0 #cbbb98, -8px 9px 0 #b9a782;
+      border-radius: 8px 2px 2px 8px;
+    }
+
+    .sbk-slot.right {
+      box-shadow: 3px 3px 0 #ddd0b2, 6px 6px 0 #cbbb98, 8px 9px 0 #b9a782;
+      border-radius: 2px 8px 8px 2px;
+    }
+
+    /* the page underneath the turning leaf darkens while the leaf is in the air */
+    .sbk-slot::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      pointer-events: none;
+      opacity: calc(var(--shade, 0) * .55);
+    }
+
+    .sbk-slot.left::after {
+      background: linear-gradient(270deg, rgba(52, 38, 20, .38), rgba(52, 38, 20, 0) 70%);
+    }
+
+    .sbk-slot.right::after {
+      background: linear-gradient(90deg, rgba(52, 38, 20, .38), rgba(52, 38, 20, 0) 70%);
+    }
+
+    .pg {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: max(10px, 1.1cqi);
+      overflow: hidden;
+      padding: max(22px, 4.4cqi) max(22px, 4.2cqi) max(22px, 3.6cqi);
+      background-color: var(--paper-pg, #efe6d2);
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+      color: var(--pg-ink, #2b2721);
+      font-family: var(--display);
+    }
+
+    .pg-l {
+      border-radius: 8px 2px 2px 8px;
+      background-image:
+        linear-gradient(270deg, rgba(70, 52, 26, .26), rgba(70, 52, 26, 0) 9%),
+        linear-gradient(90deg, rgba(70, 52, 26, .1), rgba(70, 52, 26, 0) 4%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+    }
+
+    .pg-r {
+      border-radius: 2px 8px 8px 2px;
+      background-image:
+        linear-gradient(90deg, rgba(70, 52, 26, .26), rgba(70, 52, 26, 0) 9%),
+        linear-gradient(270deg, rgba(70, 52, 26, .1), rgba(70, 52, 26, 0) 4%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+    }
+
+    .pg-kind {
+      margin: 0;
+      color: #8a5f36;
+      font-family: var(--sans);
+      font-size: max(12px, 1.05cqi);
+      font-weight: 600;
+    }
+
+    .pg-title {
+      margin: 0;
+      font-size: max(22px, 2.7cqi);
+      font-weight: 500;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+
+    .pg-title-xl {
+      margin-top: auto;
+      font-size: max(36px, 5.4cqi);
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .pg-lead {
+      max-width: 34ch;
+      margin: 0;
+      color: var(--pg-soft);
+      font-size: max(16px, 1.6cqi);
+      line-height: 1.55;
+    }
+
+    .pg-hint {
+      margin: auto 0 0;
+      color: var(--pg-faint);
+      font-family: var(--sans);
+      font-size: max(12px, 1.05cqi);
+    }
+
+    .pg-facts {
+      display: grid;
+      gap: max(8px, 1cqi);
+      margin: max(4px, .4cqi) 0 0;
+      padding-top: max(10px, 1.1cqi);
+      border-top: 1px solid var(--pg-rule);
+    }
+
+    .pg-facts div {
+      display: grid;
+      grid-template-columns: 28% 1fr;
+      gap: 12px;
+    }
+
+    .pg-facts dt {
+      color: var(--pg-faint);
+      font-size: max(14px, 1.3cqi);
+      font-style: italic;
+    }
+
+    .pg-facts dd {
+      margin: 0;
+      color: var(--pg-ink);
+      font-size: max(14px, 1.3cqi);
+      line-height: 1.45;
+    }
+
+    .pg-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      margin: auto 0 0;
+      font-family: var(--sans);
+      font-size: max(12px, 1.02cqi);
+    }
+
+    .pg-meta .status {
+      color: var(--pg-ink);
+    }
+
+    .pg-meta .stack {
+      color: var(--pg-faint);
+    }
+
+    .pg-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 20px;
+      margin: 8px 0 auto;
+    }
+
+    .pg-btn {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--pg-ink);
+      color: var(--paper-pg);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .pg-link {
+      color: var(--pg-ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-decoration-color: var(--pg-rule);
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+
+    .pg-btn:focus-visible,
+    .pg-link:focus-visible {
+      outline: 2px solid #8a5f36;
+      outline-offset: 3px;
+    }
+
+    .folio {
+      position: absolute;
+      bottom: max(14px, 1.8cqi);
+      color: var(--pg-faint);
+      font-size: max(12px, 1.05cqi);
+      font-style: italic;
+    }
+
+    .pg-l .folio {
+      left: max(22px, 4.2cqi);
+    }
+
+    .pg-r .folio {
+      right: max(22px, 4.2cqi);
+    }
+
+    .sketch-wrap {
+      display: grid;
+      flex: 1;
+      align-content: center;
+      gap: 10px;
+      min-height: 0;
+      margin: 0;
+    }
+
+    .sketch {
+      display: block;
+      width: 100%;
+      max-height: 100%;
+      color: var(--pg-ink);
+    }
+
+    .sketch .note {
+      fill: #6b4a2b;
+      font-family: var(--display);
+      font-size: 21px;
+      font-style: italic;
+    }
+
+    .sketch .note.small {
+      font-size: 15px;
+    }
+
+    .sketch .word {
+      fill: var(--pg-ink);
+      font-family: var(--display);
+      font-size: 34px;
+      font-weight: 500;
+    }
+
+    .sketch .stamp-text {
+      fill: var(--pg-ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .32em;
+    }
+
+    .sketch-wrap figcaption {
+      color: var(--pg-faint);
+      font-size: max(12px, 1.05cqi);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .pg-lined {
+      background-image:
+        linear-gradient(90deg, rgba(70, 52, 26, .26), rgba(70, 52, 26, 0) 9%),
+        repeating-linear-gradient(180deg, transparent 0 calc(2.6cqi - 1px), rgba(43, 39, 33, .07) calc(2.6cqi - 1px) 2.6cqi);
+    }
+
+    /* ---- the turning leaf ---- */
+
+    .sbk-leaf {
+      position: absolute;
+      z-index: 6;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    .sbk-leaf[hidden] {
+      display: none;
+    }
+
+    .sbk-leaf.next {
+      left: 50%;
+      transform-origin: left center;
+    }
+
+    .sbk-leaf.prev {
+      left: 0;
+      transform-origin: right center;
+    }
+
+    .leaf-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .leaf-face.back {
+      transform: rotateY(180deg);
+    }
+
+    /* light falls off the leaf as it lifts away from the page */
+    .leaf-face::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sbk-leaf.next .front::after,
+    .sbk-leaf.prev .back::after {
+      background: linear-gradient(90deg, rgba(58, 43, 20, var(--fa, 0)), rgba(58, 43, 20, calc(var(--fa, 0) * .2)));
+    }
+
+    .sbk-leaf.next .back::after,
+    .sbk-leaf.prev .front::after {
+      background: linear-gradient(270deg, rgba(58, 43, 20, var(--ba, 0)), rgba(58, 43, 20, calc(var(--ba, 0) * .2)));
+    }
+
+    .sbk-leaf.prev .front::after {
+      background: linear-gradient(270deg, rgba(58, 43, 20, var(--fa, 0)), rgba(58, 43, 20, calc(var(--fa, 0) * .2)));
+    }
+
+    .sbk-leaf.prev .back::after {
+      background: linear-gradient(90deg, rgba(58, 43, 20, var(--ba, 0)), rgba(58, 43, 20, calc(var(--ba, 0) * .2)));
+    }
+
+    /* ---- controls + index ---- */
+
+    .sbk-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      max-width: 1120px;
+      margin: 36px auto 0;
+    }
+
+    .sbk-arrow {
+      display: inline-grid;
+      width: 44px;
+      height: 56px;
+      place-items: center;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 200ms ease;
+    }
+
+    .sbk-arrow:hover {
+      color: var(--paper);
+    }
+
+    .sbk-arrow:disabled {
+      opacity: .25;
+      cursor: default;
+    }
+
+    .sbk-caption {
+      display: grid;
+      justify-items: center;
+      min-width: min(420px, 60vw);
+      margin: 0;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .sbk-count {
+      color: var(--faint);
+      font-family: var(--sans);
+      font-size: 13px;
+    }
+
+    .plate-list {
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+      list-style: none;
+    }
+
+    .plate {
+      display: grid;
+      grid-template-columns: 3em minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: baseline;
+      width: 100%;
+      padding: 15px 6px;
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 220ms ease, padding-left 220ms ease;
+    }
+
+    .plate:hover,
+    .plate[aria-current="true"] {
+      padding-left: 14px;
+      background: rgba(234, 223, 199, .05);
+    }
+
+    .plate .n {
+      color: var(--faint);
+      font-size: 13px;
+    }
+
+    .plate .t {
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: clamp(19px, 2vw, 24px);
+    }
+
+    .plate .p {
+      color: var(--faint);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .plate[aria-current="true"] .t {
+      color: var(--brass-bright);
+    }
+
+    /* without JS the pages are simply listed */
+    .sbk-source {
+      display: grid;
+      gap: 16px;
+      max-width: 560px;
+      margin: 40px auto 0;
+      --paper-pg: #efe6d2;
+      --pg-ink: #2b2721;
+      --pg-soft: rgba(43, 39, 33, .62);
+      --pg-faint: rgba(43, 39, 33, .4);
+      --pg-rule: rgba(43, 39, 33, .14);
+    }
+
+    .js-book .sbk-source {
+      display: none;
+    }
+
+    .sbk,
+    .sbk-controls,
+    .plate-list {
+      display: none;
+    }
+
+    .js-book .sbk {
+      display: block;
+    }
+
+    .js-book .sbk-controls {
+      display: flex;
+    }
+
+    .js-book .plate-list {
+      display: block;
+    }
+
+    .faq-title {
+      margin: 56px 0 6px;
+      color: var(--paper);
+      font-family: var(--display);
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    @media (max-width: 760px) {
+      .sbk-spread {
+        grid-template-columns: 1fr;
+        aspect-ratio: auto;
+        cursor: default;
+      }
+
+      .sbk-slot.left,
+      .sbk-slot.right {
+        box-shadow: 0 4px 0 #ddd0b2, 0 8px 0 #cbbb98;
+        border-radius: 8px;
+      }
+
+      .sbk-slot.left {
+        border-radius: 8px 8px 0 0;
+        box-shadow: none;
+      }
+
+      .sbk-slot.right {
+        border-radius: 0 0 8px 8px;
+      }
+
+      .sbk-slot.left > .pg {
+        border-radius: 8px 8px 0 0;
+        background-image: linear-gradient(0deg, rgba(70, 52, 26, .14), rgba(70, 52, 26, 0) 7%);
+        padding-bottom: 40px;
+      }
+
+      .sbk-slot.right > .pg {
+        min-height: 360px;
+        border-radius: 0 0 8px 8px;
+        background-image: linear-gradient(180deg, rgba(70, 52, 26, .14), rgba(70, 52, 26, 0) 7%);
+      }
+
+      .pg-title-xl {
+        margin-top: 0;
+      }
+
+      .pg-facts div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .sbk-caption {
+        min-width: 0;
+        flex: 1;
+        font-size: 18px;
+      }
+
+      .plate {
+        grid-template-columns: 2.2em minmax(0, 1fr);
+      }
+
+      .plate .p {
+        display: none;
+      }
+    }
+
+    /* ---------- Scroll reveal ---------- */
+
+    .js-motion .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 700ms ease calc(var(--i, 0) * 90ms),
+        transform 900ms var(--ease) calc(var(--i, 0) * 90ms);
+    }
+
+    .js-motion .reveal-head {
+      clip-path: polygon(-5% -15%, 105% -15%, 105% -15%, -5% -15%);
+      transform: translateY(18px);
+      transition: clip-path 1000ms var(--ease), transform 1000ms var(--ease);
+    }
+
+    .js-motion .reveal.in,
+    .js-motion .in > .reveal-head {
+      opacity: 1;
+      clip-path: polygon(-5% -15%, 105% -15%, 105% 140%, -5% 140%);
+      transform: none;
+    }
+
+    .js-motion .toc-dots {
+      transform: translateY(-4px) scaleX(0);
+      transform-origin: left center;
+      transition: transform 900ms var(--ease) calc(var(--i, 0) * 90ms + 200ms);
+    }
+
+    .js-motion .in .toc-dots {
+      transform: translateY(-4px) scaleX(1);
+    }
+
+    .js-motion .process li::before {
+      opacity: 0;
+      transform: translateY(-14px) rotate(-8deg);
+      transition: opacity 600ms ease 250ms, transform 800ms var(--ease) 250ms;
+    }
+
+    .js-motion .process li.in::before {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ---------- Responsive ---------- */
+
+    @media (max-width: 900px) {
+      .topbar {
+        padding: 16px var(--gutter);
+      }
+
+      .icon-button,
+      .ticket-button {
+        height: 44px;
+      }
+
+      .icon-button {
+        width: 44px;
+      }
+
+      .ticket-button {
+        padding: 0 18px;
+      }
+
+      .hero-word {
+        top: 15vh;
+        font-size: clamp(110px, 26vw, 220px);
+      }
+
+      .book-card[data-book="web"] {
+        --x: 14%;
+        --y: 34%;
+        --w: min(46vw, 340px);
+      }
+
+      .book-card[data-book="quanly"] {
+        --x: 50%;
+        --y: 28%;
+        --w: min(50vw, 370px);
+      }
+
+      .book-card[data-book="hoctap"] {
+        --x: 86%;
+        --y: 35%;
+        --w: min(46vw, 340px);
+      }
+
+      .intro-inner {
+        grid-template-columns: 1fr;
+      }
+
+      [data-mode="detail"] .stage {
+        min-height: calc(100svh + 900px);
+      }
+
+      [data-mode="detail"] .book-card.selected {
+        left: 50%;
+        top: 50svh;
+        width: min(58vw, 340px);
+      }
+
+      .detail-panel {
+        top: calc(100svh + 48px);
+        bottom: auto;
+        display: block;
+        right: var(--gutter);
+        left: var(--gutter);
+        width: auto;
+        padding-bottom: 150px;
+      }
+
+      .detail-scroll {
+        overflow: visible;
+        padding-right: 0;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .bottom-dock {
+        right: var(--gutter);
+        bottom: 16px;
+        left: var(--gutter);
+        width: auto;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        position: static;
+      }
+
+    }
+
+    @media (max-width: 560px) {
+      .brand {
+        font-size: 22px;
+      }
+
+      .ticket-button {
+        display: none;
+      }
+
+      .hero-word {
+        top: 17vh;
+        font-size: 30vw;
+      }
+
+      .book-card[data-book="web"] {
+        --x: 6%;
+        --y: 36%;
+        --w: 60vw;
+      }
+
+      .book-card[data-book="quanly"] {
+        --x: 50%;
+        --y: 31%;
+        --w: 64vw;
+      }
+
+      .book-card[data-book="hoctap"] {
+        --x: 94%;
+        --y: 37%;
+        --w: 60vw;
+      }
+
+      .hero-hint {
+        font-size: 13px;
+      }
+
+      .hero-actions,
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      [data-mode="detail"] .book-card.selected {
+        width: min(67vw, 315px);
+      }
+
+      .pill {
+        min-height: 50px;
+        padding: 0 8px;
+        font-size: 13px;
+      }
+
+      .meta-price {
+        font-size: 19px;
+      }
+
+      .close-button {
+        top: 18px;
+      }
+
+      .work-list li {
+        grid-template-columns: 1fr;
+      }
+
+      .work-for {
+        text-align: left;
+      }
+
+      .process li {
+        grid-template-columns: 44px 1fr;
+      }
+
+      .process li::before {
+        font-size: 36px;
+      }
+
+      .process .when {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .promises,
+      .form {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-line {
+        flex-wrap: wrap;
+        row-gap: 0;
+      }
+
+      .toc-dots {
+        display: none;
+      }
+
+      .toc-price {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-scroll {
+        height: auto;
+      }
+
+      .hero-scroll > .stage {
+        position: relative;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .cover-motion {
+        display: none !important;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+  </style>
+</head>
+<body data-mode="gallery" data-menu="closed">
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="NA Web Agency, về đầu trang">NA Web Agency</a>
+    <div class="nav-actions">
+      <a class="ticket-button" href="#lien-he">Nhận báo giá</a>
+      <button class="icon-button" id="menuButton" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="menuLayer">
+        <span class="menu-glyph" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="menu-layer" id="menuLayer" aria-label="Menu" inert>
+    <ul class="menu-list">
+      <li><a class="menu-link" href="#top" data-menu-close>Dịch vụ</a></li>
+      <li><a class="menu-link" href="#san-pham" data-menu-close>Sản phẩm</a></li>
+      <li><a class="menu-link" href="#bang-gia" data-menu-close>Bảng giá</a></li>
+      <li><a class="menu-link" href="#lien-he" data-menu-close>Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <main id="top">
+    <div class="hero-scroll">
+    <section class="stage" aria-label="Ba dịch vụ của NA Web Agency">
+      <div class="hero-word" aria-hidden="true">NA Web</div>
+
+      <div class="gallery" role="group" aria-label="Chọn một dịch vụ để xem chi tiết">
+        <div class="gallery-inner">
+        <button
+          class="book-card"
+          type="button"
+          data-book="web"
+          aria-label="Xem chi tiết dịch vụ website giới thiệu và bán hàng"
+          style="--cover-color: #566044; --cover: url('assets/cover-3.jpg');"
+        >
+          <span class="book" aria-hidden="true">
+            <span class="book-shadow"></span>
+            <span class="book-back"></span>
+            <span class="page-block"></span>
+            <span class="page-fan"><i></i><i></i><i></i><i></i></span>
+            <span class="front-cover">
+              <video class="cover-motion" autoplay muted loop playsinline preload="metadata">
+                <source src="assets/motion-3.mp4" type="video/mp4">
+              </video>
+              <span class="cover-copy">
+                <span class="cover-kicker">NA Web, tập một</span>
+                <span class="cover-title">Website</span>
+                <span class="cover-subtitle">Giới thiệu và bán hàng</span>
+                <span></span>
+                <span class="cover-footer">Landing page · Web công ty · Cửa hàng</span>
+              </span>
+            </span>
+            <span class="open-badge">Xem</span>
+          </span>
+        </button>
+
+        <button
+          class="book-card"
+          type="button"
+          data-book="quanly"
+          aria-label="Xem chi tiết dịch vụ phần mềm quản lý"
+          style="--cover-color: #363126; --cover: url('assets/cover-1.jpg');"
+        >
+          <span class="book" aria-hidden="true">
+            <span class="book-shadow"></span>
+            <span class="book-back"></span>
+            <span class="page-block"></span>
+            <span class="page-fan"><i></i><i></i><i></i><i></i></span>
+            <span class="front-cover">
+              <video class="cover-motion" autoplay muted loop playsinline preload="metadata">
+                <source src="assets/motion-1.mp4" type="video/mp4">
+              </video>
+              <span class="cover-copy">
+                <span class="cover-kicker">NA Web, tập hai</span>
+                <span class="cover-title">Phần mềm<br>quản lý</span>
+                <span class="cover-subtitle">Thay sổ sách và file Excel</span>
+                <span></span>
+                <span class="cover-footer">Nhân sự · Kho · Nhà trọ · Dự án</span>
+              </span>
+            </span>
+            <span class="open-badge">Xem</span>
+          </span>
+        </button>
+
+        <button
+          class="book-card"
+          type="button"
+          data-book="hoctap"
+          aria-label="Xem chi tiết dịch vụ web học tập và đào tạo"
+          style="--cover-color: #945a3e; --cover: url('assets/cover-2.jpg');"
+        >
+          <span class="book" aria-hidden="true">
+            <span class="book-shadow"></span>
+            <span class="book-back"></span>
+            <span class="page-block"></span>
+            <span class="page-fan"><i></i><i></i><i></i><i></i></span>
+            <span class="front-cover">
+              <video class="cover-motion" autoplay muted loop playsinline preload="metadata">
+                <source src="assets/motion-2.mp4" type="video/mp4">
+              </video>
+              <span class="cover-copy">
+                <span class="cover-kicker">NA Web, tập ba</span>
+                <span class="cover-title">Web<br>học tập</span>
+                <span class="cover-subtitle">Luyện đề và khóa học</span>
+                <span></span>
+                <span class="cover-footer">Trung tâm · Gia sư · Lớp học</span>
+              </span>
+            </span>
+            <span class="open-badge">Xem</span>
+          </span>
+        </button>
+        </div>
+      </div>
+
+      <p class="hero-hint" aria-hidden="true">Bấm vào một cuốn sách để xem dịch vụ</p>
+
+      <section class="detail-panel" id="detailPanel" aria-labelledby="detailTitle" aria-hidden="true" inert>
+        <h2 class="detail-title" id="detailTitle"></h2>
+        <div class="detail-scroll" id="detailScroll" tabindex="0" aria-label="Chi tiết dịch vụ">
+          <p class="detail-description" id="detailDescription"></p>
+          <section class="doc-section" aria-labelledby="getsLabel">
+            <h3 class="doc-label" id="getsLabel">Bạn nhận được</h3>
+            <ul class="gets" id="detailGets"></ul>
+          </section>
+          <section class="doc-section" aria-labelledby="stepsLabel">
+            <h3 class="doc-label" id="stepsLabel">Làm trong 3 bước</h3>
+            <ol class="doc-steps" id="detailSteps"></ol>
+          </section>
+          <section class="doc-section" aria-labelledby="pkgLabel">
+            <h3 class="doc-label" id="pkgLabel">Gói và giá tham khảo</h3>
+            <ul class="pkg" id="detailPkg"></ul>
+          </section>
+          <section class="doc-section" aria-labelledby="workLabel">
+            <h3 class="doc-label" id="workLabel">Chúng tôi đã làm</h3>
+            <p class="doc-note" id="detailWork"></p>
+          </section>
+        </div>
+        <div class="bottom-dock">
+          <div class="meta-row">
+            <span class="meta-price" id="detailFrom"></span>
+            <span class="meta-divider" aria-hidden="true"></span>
+            <span class="meta-time" id="detailTime"></span>
+          </div>
+          <hr class="detail-rule">
+          <div class="action-rail">
+            <a class="pill primary" href="tel:0352472151">Gọi tư vấn</a>
+            <a class="pill" href="https://zalo.me/0352472151" target="_blank" rel="noopener">Nhắn Zalo</a>
+            <a class="pill quiet" href="#lien-he" id="detailContact">Gửi yêu cầu</a>
+          </div>
+        </div>
+      </section>
+
+      <button class="close-button" id="closeButton" type="button" aria-label="Đóng chi tiết dịch vụ" tabindex="-1">×</button>
+    </section>
+
+    </div>
+
+    <section class="intro" aria-labelledby="introTitle">
+      <div class="intro-inner">
+        <h1 id="introTitle" class="reveal-line">Website và phần mềm quản lý, làm riêng cho việc kinh doanh của bạn.</h1>
+        <div class="reveal-line">
+          <p>NA Web làm website bán hàng, phần mềm thay sổ sách và Excel, web học tập cho trung tâm. Báo giá rõ, chia giai đoạn, bạn trả từng phần.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#lien-he">Nhận báo giá</a>
+            <a class="btn btn-line" href="#san-pham">Xem sản phẩm đã làm</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sổ dự án: mỗi trang đôi là một sản phẩm. Khi có ảnh chụp màn hình thật,
+         thay <svg class="sketch"> ở trang phải bằng <img>. -->
+    <section class="section book-section" id="san-pham" aria-labelledby="workTitle">
+      <div class="book-head">
+        <h2 id="workTitle" class="reveal-line">Sản phẩm đã làm</h2>
+        <p class="reveal-line">Phần mềm chạy thật, do đội NA Web viết từ đầu. Lật từng trang hoặc chọn trong mục lục bên dưới.</p>
+      </div>
+
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.4"/>
+        </filter>
+        <path id="stampRing" d="M200 220 m-112 0 a112 112 0 1 1 224 0 a112 112 0 1 1 -224 0" fill="none"/>
+      </svg>
+
+      <div class="sbk reveal-line" id="sbk" tabindex="0" aria-roledescription="sổ lật trang" aria-label="Sổ dự án, dùng phím mũi tên trái phải để lật trang">
+        <div class="sbk-tilt">
+          <div class="sbk-cast" aria-hidden="true"></div>
+          <div class="sbk-spread" id="sbkSpread">
+            <div class="sbk-slot left" id="sbkLeft"></div>
+            <div class="sbk-slot right" id="sbkRight"></div>
+            <div class="sbk-leaf" id="sbkLeaf" hidden aria-hidden="true">
+              <div class="leaf-face front" id="sbkFront"></div>
+              <div class="leaf-face back" id="sbkBack"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sbk-controls">
+        <button class="sbk-arrow" id="sbkPrev" type="button" aria-label="Trang trước">
+          <svg viewBox="0 0 14 44" width="14" height="44" fill="none" aria-hidden="true"><polyline points="11,3 3,22 11,41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="sbk-caption" aria-live="polite"><span id="sbkTitle"></span><span class="sbk-count" id="sbkCount"></span></p>
+        <button class="sbk-arrow" id="sbkNext" type="button" aria-label="Trang sau">
+          <svg viewBox="0 0 14 44" width="14" height="44" fill="none" aria-hidden="true"><polyline points="3,3 11,22 3,41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <ol class="plate-list" id="plateList">
+        <li><button class="plate" type="button" data-go="1"><span class="n">01</span><span class="t">Hệ thống quản lý công ty nội thất</span><span class="p">Phần mềm quản lý</span></button></li>
+        <li><button class="plate" type="button" data-go="2"><span class="n">02</span><span class="t">TeamCherry, trợ lý cô giáo dạy thêm</span><span class="p">Web học tập</span></button></li>
+        <li><button class="plate" type="button" data-go="3"><span class="n">03</span><span class="t">Recall Vault, ôn từ vựng</span><span class="p">Web học tập</span></button></li>
+        <li><button class="plate" type="button" data-go="4"><span class="n">04</span><span class="t">Nhà sách trực tuyến tích hợp AI</span><span class="p">Web bán hàng</span></button></li>
+        <li><button class="plate" type="button" data-go="5"><span class="n">05</span><span class="t">Dự án của bạn</span><span class="p">Trang còn trống</span></button></li>
+      </ol>
+
+      <!-- Nội dung các trang. JS dựng sổ từ đây; khi không có JS thì đây là danh sách đọc được. -->
+      <div class="sbk-source" id="sbkSource">
+        <article class="pg pg-l" data-title="Sổ dự án NA Web">
+          <p class="pg-kind">NA Web Agency</p>
+          <h3 class="pg-title pg-title-xl">Sổ dự án</h3>
+          <p class="pg-lead">Mỗi trang đôi trong sổ là một phần mềm chúng tôi đã viết: bên trái là bài toán của khách, bên phải là phác thảo giao diện.</p>
+          <p class="pg-hint">Lật sang trang sau để xem dự án đầu tiên.</p>
+          <span class="folio">1</span>
+        </article>
+        <article class="pg pg-r">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Con dấu NA Web Agency">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="200" cy="220" r="150"/>
+                <circle cx="200" cy="220" r="134"/>
+                <circle cx="200" cy="220" r="78"/>
+                <path d="M200 156 L214 206 L264 220 L214 234 L200 284 L186 234 L136 220 L186 206 Z"/>
+                <path d="M200 186 L208 212 L234 220 L208 228 L200 254 L192 228 L166 220 L192 212 Z" fill="currentColor" fill-opacity=".18"/>
+                <path d="M80 420 C 140 400, 260 440, 320 412"/>
+              </g>
+              <text class="stamp-text"><textPath href="#stampRing" startOffset="2%">NA WEB AGENCY · SỔ DỰ ÁN · NĂM 2026 ·</textPath></text>
+            </svg>
+          </figure>
+          <span class="folio">2</span>
+        </article>
+
+        <article class="pg pg-l" data-title="Hệ thống quản lý công ty nội thất">
+          <p class="pg-kind">Phần mềm quản lý</p>
+          <h3 class="pg-title">Hệ thống quản lý công ty nội thất</h3>
+          <dl class="pg-facts">
+            <div><dt>Cho ai</dt><dd>Công ty thiết kế và thi công nội thất, nhiều phòng ban.</dd></div>
+            <div><dt>Bài toán</dt><dd>Theo dõi nhiều công trình cùng lúc, mỗi công trình đi qua 9 giai đoạn, có hợp đồng, tiền cọc và thu chi riêng.</dd></div>
+            <div><dt>Chúng tôi làm</dt><dd>Quản lý khách hàng, dự án theo giai đoạn, tiến độ có ảnh, thu chi theo công trình. Mỗi phòng ban chỉ thấy đúng phần việc của mình, có trợ lý AI trả lời câu hỏi về dữ liệu.</dd></div>
+          </dl>
+          <p class="pg-meta"><span class="status">Đang triển khai cho khách</span><span class="stack">Next.js · PostgreSQL · Docker</span></p>
+          <span class="folio">3</span>
+        </article>
+        <article class="pg pg-r">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Phác thảo bảng dự án chia theo giai đoạn">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="16" y="40" width="368" height="250" rx="10"/>
+                <path d="M16 68 H384"/>
+                <circle cx="32" cy="54" r="4"/><circle cx="46" cy="54" r="4"/><circle cx="60" cy="54" r="4"/>
+                <path d="M86 68 V290"/>
+                <path d="M30 92 h40 M30 114 h32 M30 136 h42 M30 158 h28"/>
+                <path d="M100 86 h50 M162 86 h50 M224 86 h50 M286 86 h50"/>
+                <rect x="100" y="98" width="50" height="34" rx="4"/><rect x="100" y="140" width="50" height="34" rx="4"/><rect x="100" y="182" width="50" height="34" rx="4"/>
+                <rect x="162" y="98" width="50" height="34" rx="4"/><rect x="162" y="140" width="50" height="34" rx="4"/>
+                <rect x="224" y="98" width="50" height="34" rx="4" fill="currentColor" fill-opacity=".12"/>
+                <rect x="286" y="98" width="50" height="34" rx="4"/><rect x="286" y="140" width="50" height="34" rx="4"/><rect x="286" y="182" width="50" height="34" rx="4"/><rect x="286" y="224" width="50" height="34" rx="4"/>
+                <path d="M150 360 C 150 330, 170 300, 186 268"/><path d="M178 274 l8 -8 l3 11"/>
+                <ellipse cx="320" cy="420" rx="34" ry="10"/><path d="M286 420 v-14 M354 420 v-14"/><ellipse cx="320" cy="406" rx="34" ry="10"/><path d="M286 406 v-14 M354 406 v-14"/><ellipse cx="320" cy="392" rx="34" ry="10"/>
+              </g>
+              <text class="note" x="40" y="388">9 giai đoạn, từ báo giá</text>
+              <text class="note" x="40" y="414">đến ngày bàn giao</text>
+              <text class="note" x="232" y="356">thu chi theo công trình</text>
+            </svg>
+            <figcaption>Phác thảo giao diện</figcaption>
+          </figure>
+          <span class="folio">4</span>
+        </article>
+
+        <article class="pg pg-l" data-title="TeamCherry, trợ lý cô giáo dạy thêm">
+          <p class="pg-kind">Web học tập</p>
+          <h3 class="pg-title">TeamCherry, trợ lý cho cô giáo dạy thêm</h3>
+          <dl class="pg-facts">
+            <div><dt>Cho ai</dt><dd>Giáo viên dạy thêm, học sinh và phụ huynh.</dd></div>
+            <div><dt>Bài toán</dt><dd>Điểm danh, đếm buổi, tính học phí và chấm bài cho vài lớp mà không cần sổ tay.</dd></div>
+            <div><dt>Chúng tôi làm</dt><dd>Điểm danh ngay trên lớp, tự tạo phiếu học phí theo chu kỳ kèm mã VietQR cho phụ huynh. Học sinh chụp bài nộp, cô chấm ngay trên điện thoại.</dd></div>
+          </dl>
+          <p class="pg-meta"><span class="status">Đang triển khai</span><span class="stack">Next.js · PostgreSQL · VietQR</span></p>
+          <span class="folio">5</span>
+        </article>
+        <article class="pg pg-r">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Phác thảo màn hình điểm danh và phiếu học phí có mã QR">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="30" y="30" width="170" height="320" rx="24"/>
+                <path d="M92 46 h46"/>
+                <rect x="50" y="88" width="18" height="18" rx="3"/><path d="M53 97 l5 5 l9 -11"/><path d="M80 97 h96"/>
+                <rect x="50" y="128" width="18" height="18" rx="3"/><path d="M53 137 l5 5 l9 -11"/><path d="M80 137 h84"/>
+                <rect x="50" y="168" width="18" height="18" rx="3"/><path d="M80 177 h92"/>
+                <rect x="50" y="208" width="18" height="18" rx="3"/><path d="M53 217 l5 5 l9 -11"/><path d="M80 217 h70"/>
+                <rect x="50" y="248" width="18" height="18" rx="3"/><path d="M53 257 l5 5 l9 -11"/><path d="M80 257 h88"/>
+                <rect x="60" y="300" width="110" height="30" rx="15"/>
+                <path d="M228 110 h146 v236 l-12 -10 l-12 10 l-12 -10 l-12 10 l-12 -10 l-12 10 l-12 -10 l-12 10 l-12 -10 l-12 10 l-12 -10 l-14 10 Z"/>
+                <path d="M246 136 h80 M246 158 h110 M246 180 h96 M246 202 h60"/>
+                <rect x="266" y="226" width="72" height="72"/>
+                <rect x="274" y="234" width="18" height="18" fill="currentColor"/><rect x="312" y="234" width="18" height="18" fill="currentColor"/><rect x="274" y="272" width="18" height="18" fill="currentColor"/>
+                <path d="M304 262 h8 M318 280 h12 M300 290 h6 M318 266 v8"/>
+              </g>
+              <text class="note" x="34" y="396">điểm danh một chạm</text>
+              <text class="note" x="222" y="380">phiếu học phí</text>
+              <text class="note" x="222" y="406">kèm VietQR</text>
+            </svg>
+            <figcaption>Phác thảo giao diện</figcaption>
+          </figure>
+          <span class="folio">6</span>
+        </article>
+
+        <article class="pg pg-l" data-title="Recall Vault, ôn từ vựng">
+          <p class="pg-kind">Web học tập</p>
+          <h3 class="pg-title">Recall Vault, ứng dụng ôn từ vựng</h3>
+          <dl class="pg-facts">
+            <div><dt>Cho ai</dt><dd>Người Việt học tiếng Anh trình độ sơ và trung cấp.</dd></div>
+            <div><dt>Bài toán</dt><dd>Học từ mới thì nhanh quên, ôn lại thì không biết nên ôn từ nào trước.</dd></div>
+            <div><dt>Chúng tôi làm</dt><dd>Ôn theo phương pháp lặp lại ngắt quãng: hệ thống nhắc đúng từ sắp quên, đúng lúc cần ôn. Chạy được cả khi không có mạng.</dd></div>
+          </dl>
+          <p class="pg-meta"><span class="status" data-state="demo">Bản chạy thử</span><span class="stack">JavaScript · PostgreSQL</span></p>
+          <span class="folio">7</span>
+        </article>
+        <article class="pg pg-r">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Phác thảo thẻ từ vựng và đường cong ghi nhớ">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="70" y="52" width="260" height="160" rx="12" transform="rotate(-7 200 132)"/>
+                <rect x="70" y="52" width="260" height="160" rx="12" transform="rotate(4 200 132)"/>
+                <rect x="70" y="52" width="260" height="160" rx="12" fill="#efe6d2"/>
+                <path d="M110 176 h70 M220 176 h70"/>
+                <path d="M40 290 V450 H370"/>
+                <path d="M44 300 C 70 380, 96 410, 128 420 L128 316 C 160 390, 190 410, 222 414 L222 322 C 270 380, 320 396, 364 400"/>
+              </g>
+              <circle cx="128" cy="316" r="6" fill="currentColor"/>
+              <circle cx="222" cy="322" r="6" fill="currentColor"/>
+              <text class="word" x="200" y="128" text-anchor="middle">serendipity</text>
+              <text class="note" x="200" y="160" text-anchor="middle">tình cờ mà may mắn</text>
+              <text class="note" x="150" y="300">nhắc ôn đúng lúc sắp quên</text>
+            </svg>
+            <figcaption>Phác thảo giao diện</figcaption>
+          </figure>
+          <span class="folio">8</span>
+        </article>
+
+        <article class="pg pg-l" data-title="Nhà sách trực tuyến tích hợp AI">
+          <p class="pg-kind">Web bán hàng</p>
+          <h3 class="pg-title">Nhà sách trực tuyến tích hợp AI</h3>
+          <dl class="pg-facts">
+            <div><dt>Cho ai</dt><dd>Cửa hàng bán lẻ muốn có kênh bán hàng của riêng mình.</dd></div>
+            <div><dt>Bài toán</dt><dd>Khách vào xem nhiều nhưng khó tìm được cuốn hợp với mình, ít quay lại mua lần hai.</dd></div>
+            <div><dt>Chúng tôi làm</dt><dd>Giỏ hàng, đặt hàng, tích điểm khách thân thiết, blog cộng đồng và trợ lý AI gợi ý sách theo sở thích.</dd></div>
+          </dl>
+          <p class="pg-meta"><span class="status" data-state="demo">Bản chạy thử</span><span class="stack">Web bán hàng · AI</span></p>
+          <span class="folio">9</span>
+        </article>
+        <article class="pg pg-r">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Phác thảo trang cửa hàng sách với hộp gợi ý AI">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="16" y="30" width="368" height="300" rx="10"/>
+                <path d="M16 62 H384"/>
+                <path d="M34 46 h60"/>
+                <path d="M334 40 h8 l6 16 h22 l5 -12"/><circle cx="352" cy="58" r="2"/><circle cx="366" cy="58" r="2"/>
+                <rect x="40" y="82" width="62" height="88" rx="3"/><path d="M50 82 v88"/>
+                <rect x="124" y="82" width="62" height="88" rx="3" fill="currentColor" fill-opacity=".12"/><path d="M134 82 v88"/>
+                <rect x="208" y="82" width="62" height="88" rx="3"/><path d="M218 82 v88"/>
+                <rect x="292" y="82" width="62" height="88" rx="3"/><path d="M302 82 v88"/>
+                <path d="M40 184 h50 M124 184 h44 M208 184 h56 M292 184 h40"/>
+                <path d="M40 200 h26 M124 200 h30 M208 200 h22 M292 200 h34"/>
+                <rect x="40" y="226" width="62" height="88" rx="3"/><rect x="124" y="226" width="62" height="88" rx="3"/>
+                <path d="M216 236 h150 a10 10 0 0 1 10 10 v54 a10 10 0 0 1 -10 10 h-110 l-18 16 v-16 h-22 a10 10 0 0 1 -10 -10 v-54 a10 10 0 0 1 10 -10 Z"/>
+                <path d="M232 280 h110 M232 296 h80"/>
+              </g>
+              <text class="note small" x="232" y="262">Gợi ý cho bạn</text>
+              <text class="note" x="150" y="390">gợi ý sách bằng AI,</text>
+              <text class="note" x="150" y="416">theo đúng gu từng khách</text>
+            </svg>
+            <figcaption>Phác thảo giao diện</figcaption>
+          </figure>
+          <span class="folio">10</span>
+        </article>
+
+        <article class="pg pg-l" data-title="Dự án của bạn">
+          <p class="pg-kind">Trang tiếp theo</p>
+          <h3 class="pg-title pg-title-xl">Dự án của bạn</h3>
+          <p class="pg-lead">Trang này đang để trống. Kể cho chúng tôi bạn đang làm việc gì bằng sổ tay hay Excel, buổi trao đổi đầu tiên mất 15 phút và miễn phí.</p>
+          <p class="pg-actions">
+            <a class="pg-btn" href="#lien-he">Nhận báo giá</a>
+            <a class="pg-link" href="tel:0352472151">Gọi 0352 472 151</a>
+          </p>
+          <span class="folio">11</span>
+        </article>
+        <article class="pg pg-r pg-lined">
+          <figure class="sketch-wrap">
+            <svg class="sketch" viewBox="0 0 400 480" role="img" aria-label="Trang giấy kẻ dòng còn trống">
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 7">
+                <path d="M150 92 H370 M190 152 H370 M180 212 H370 M140 272 H370"/>
+              </g>
+              <text class="note" x="24" y="88">Tên dự án:</text>
+              <text class="note" x="24" y="148">Đang làm bằng:</text>
+              <text class="note" x="24" y="208">Muốn xong trước:</text>
+              <text class="note" x="24" y="268">Ngân sách:</text>
+              <g filter="url(#rough)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M250 430 L350 330 L366 346 L266 446 L244 452 Z"/><path d="M340 340 l16 16"/><path d="M250 430 l16 16"/>
+              </g>
+            </svg>
+          </figure>
+          <span class="folio">12</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="cach-lam" aria-labelledby="howTitle">
+      <div class="section-grid">
+        <div class="section-head">
+          <h2 id="howTitle">Làm việc với NA Web</h2>
+          <p>Đội nhỏ, nên bạn trao đổi thẳng với người trực tiếp viết code. Không qua trung gian, không phải nói lại nhu cầu nhiều lần.</p>
+        </div>
+        <div>
+          <ol class="process">
+            <li>
+              <h3>Trao đổi 15 phút</h3>
+              <span class="when">Miễn phí</span>
+              <p>Bạn kể cách đang làm việc hiện tại và chỗ nào đang tốn thời gian. Chúng tôi hỏi ngân sách dự kiến để đề xuất gói phù hợp.</p>
+            </li>
+            <li>
+              <h3>Báo giá và chia giai đoạn</h3>
+              <span class="when">Trong 1–2 ngày</span>
+              <p>Bản báo giá liệt kê từng tính năng, thời gian làm và số tiền của từng giai đoạn.</p>
+            </li>
+            <li>
+              <h3>Làm và gửi bản chạy thử</h3>
+              <span class="when">Theo thời gian của gói</span>
+              <p>Bạn nhận đường dẫn dùng thử ngay trong lúc làm, góp ý sớm thay vì đợi đến cuối.</p>
+            </li>
+            <li>
+              <h3>Bàn giao và duy trì</h3>
+              <span class="when">Sau nghiệm thu</span>
+              <p>Đưa lên tên miền của bạn, hướng dẫn sử dụng, chuyển dữ liệu cũ nếu cần. Sau đó bạn chọn có dùng gói bảo trì hay không.</p>
+            </li>
+          </ol>
+          <ul class="promises">
+            <li>
+              <strong>Báo giá rõ từng hạng mục</strong>
+              <span>Bạn biết mình trả tiền cho tính năng nào trước khi ký.</span>
+            </li>
+            <li>
+              <strong>Chia giai đoạn, trả từng phần</strong>
+              <span>Giai đoạn sau chỉ bắt đầu khi giai đoạn trước chạy ổn.</span>
+            </li>
+            <li>
+              <strong>Xem bản chạy thử trước khi nghiệm thu</strong>
+              <span>Bạn dùng thử trên điện thoại và máy tính, góp ý rồi mới chốt.</span>
+            </li>
+            <li>
+              <strong>Hỗ trợ qua Zalo sau bàn giao</strong>
+              <span>Sửa lỗi, cập nhật bảo mật và sao lưu với gói bảo trì hằng năm.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bang-gia" aria-labelledby="priceTitle">
+      <div class="section-grid">
+        <div class="section-head">
+          <h2 id="priceTitle">Bảng giá tham khảo</h2>
+          <p>Giá cuối cùng phụ thuộc số tính năng bạn cần. Bạn nhận báo giá chi tiết sau buổi trao đổi.</p>
+        </div>
+        <div>
+          <div class="toc-group">
+            <h3>Website giới thiệu và bán hàng</h3>
+            <ul class="toc">
+              <li>
+                <div class="toc-line"><span class="toc-name">Landing page 1 trang</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">2,5 – 3,5 triệu</span></div>
+                <p class="toc-detail">3–5 ngày. Form đăng ký đổ về Zalo, chuẩn di động, gắn sẵn Google Analytics và Facebook Pixel.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Web giới thiệu công ty</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">4 – 7 triệu</span></div>
+                <p class="toc-detail">10–14 ngày. 5–7 trang, trang quản trị để bạn tự sửa nội dung, chuẩn SEO cơ bản.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Web bán hàng cơ bản</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">11 – 16 triệu</span></div>
+                <p class="toc-detail">3–4 tuần. Danh mục, giỏ hàng, quản lý đơn và khách hàng, mã giảm giá.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Web bán hàng đầy đủ</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">20 – 32 triệu</span></div>
+                <p class="toc-detail">5–7 tuần. Thêm thanh toán online, vận chuyển, biến thể sản phẩm, tài khoản khách, báo cáo doanh thu.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <h3>Phần mềm quản lý</h3>
+            <p>Chia giai đoạn, bạn trả từng phần.</p>
+            <ul class="toc">
+              <li>
+                <div class="toc-line"><span class="toc-name">Quản lý nhà trọ, giai đoạn 1</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">8 – 12 triệu</span></div>
+                <p class="toc-detail">2–3 tuần. Sơ đồ phòng, hợp đồng, ghi điện nước, tự tính và gửi hóa đơn hằng tháng.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Quản lý nhân sự, giai đoạn 1</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">8 – 12 triệu</span></div>
+                <p class="toc-detail">2–3 tuần. Hồ sơ nhân viên, chấm công, đơn nghỉ phép có duyệt. Giai đoạn 2 thêm tính lương.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Quản lý kho và bán hàng, giai đoạn 1</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">8 – 12 triệu</span></div>
+                <p class="toc-detail">3–4 tuần. Nhập, xuất, tồn kho thời gian thực, cảnh báo hàng sắp hết.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Quản lý dự án nội bộ</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">12 – 22 triệu</span></div>
+                <p class="toc-detail">3–5 tuần. Dự án theo giai đoạn, hợp đồng, tiền cọc, tiến độ có ảnh, thu chi theo dự án.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <h3>Web học tập và đào tạo</h3>
+            <ul class="toc">
+              <li>
+                <div class="toc-line"><span class="toc-name">Web ôn tập, luyện đề</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">5 – 8 triệu</span></div>
+                <p class="toc-detail">2–4 tuần. Ngân hàng câu hỏi, đề có đếm giờ, chấm điểm tự động, xem lại đáp án.</p>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Nền tảng bán khóa học online</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">28 – 45 triệu</span></div>
+                <p class="toc-detail">8–12 tuần. Bài giảng video, lộ trình học, thanh toán online, chứng chỉ hoàn thành.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="toc-group">
+            <h3>Cộng thêm và duy trì</h3>
+            <ul class="toc">
+              <li>
+                <div class="toc-line"><span class="toc-name">Thanh toán VNPay, MoMo, QR ngân hàng</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">từ 3 triệu</span></div>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Chuyển dữ liệu từ Excel cũ</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">từ 2,5 triệu</span></div>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Chatbot AI trên Zalo OA</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">từ 3 triệu</span></div>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Tên miền, hosting, SSL</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">từ 2,5 triệu/năm</span></div>
+              </li>
+              <li>
+                <div class="toc-line"><span class="toc-name">Bảo trì và hỗ trợ kỹ thuật</span><span class="toc-dots" aria-hidden="true"></span><span class="toc-price">từ 3 triệu/năm</span></div>
+                <p class="toc-detail">Sửa lỗi, cập nhật bảo mật, sao lưu dữ liệu, hỗ trợ qua Zalo trong giờ hành chính.</p>
+              </li>
+            </ul>
+          </div>
+
+          <p class="price-note"><strong>Giá khởi động.</strong> Mức giá này áp dụng trong giai đoạn NA Web xây dựng hồ sơ dự án. Giá sẽ điều chỉnh khi đội có thêm dự án, và chúng tôi sẽ báo trước.</p>
+
+          <div class="faq" id="hoi-dap">
+            <h3 class="faq-title">Câu hỏi về giá và thanh toán</h3>
+            <details>
+              <summary>Tôi có phải trả hết tiền một lần không?</summary>
+              <p>Không. Gói nhỏ thường chia cọc và thanh toán khi nghiệm thu. Phần mềm quản lý được chia giai đoạn, bạn trả theo từng giai đoạn đã chạy ổn.</p>
+            </details>
+            <details>
+              <summary>Đội nhỏ thì có kịp tiến độ không?</summary>
+              <p>Chúng tôi chỉ nhận số dự án vừa sức cùng lúc, và thời gian trong báo giá đã tính sẵn cho việc đó. Bạn theo dõi tiến độ qua bản chạy thử được cập nhật trong lúc làm.</p>
+            </details>
+            <details>
+              <summary>Tôi chưa có tên miền và hosting thì sao?</summary>
+              <p>Chúng tôi đăng ký và cài đặt giúp bạn, hoặc bạn tự trả trực tiếp cho nhà cung cấp. Tên miền đứng tên bạn.</p>
+            </details>
+            <details>
+              <summary>Sau khi bàn giao muốn thêm tính năng thì tính thế nào?</summary>
+              <p>Tính theo khối lượng thật, 700.000đ cho mỗi ngày công. Bạn nhận báo giá trước khi chúng tôi bắt đầu làm.</p>
+            </details>
+            <details>
+              <summary>Tôi đang dùng Excel, dữ liệu cũ có chuyển sang được không?</summary>
+              <p>Được. Chúng tôi làm sạch, đối chiếu rồi đưa dữ liệu từ file Excel hiện tại vào hệ thống mới.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="lien-he" aria-labelledby="contactTitle">
+      <div class="section-grid">
+        <div class="section-head">
+          <h2 id="contactTitle">Kể cho chúng tôi việc bạn cần làm</h2>
+          <div class="contact-lines">
+            <a href="tel:0352472151">0352 472 151</a>
+            <small>Gọi hoặc nhắn Zalo, trả lời trong giờ hành chính</small>
+            <a href="mailto:hieulp3a2004@gmail.com" style="font-size: clamp(20px, 2vw, 26px);">hieulp3a2004@gmail.com</a>
+          </div>
+        </div>
+        <form class="form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="fName">Tên của bạn</label>
+            <input id="fName" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="fPhone">Số điện thoại hoặc Zalo</label>
+            <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
+          </div>
+          <div class="field">
+            <label for="fService">Bạn cần làm</label>
+            <select id="fService" name="service">
+              <option>Website giới thiệu hoặc bán hàng</option>
+              <option>Phần mềm quản lý</option>
+              <option>Web học tập, luyện đề</option>
+              <option>Chưa rõ, cần tư vấn</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fBudget">Ngân sách dự kiến</label>
+            <select id="fBudget" name="budget">
+              <option>Dưới 5 triệu</option>
+              <option>5 – 15 triệu</option>
+              <option>15 – 30 triệu</option>
+              <option>Trên 30 triệu</option>
+              <option>Chưa xác định</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="fNote">Mô tả ngắn</label>
+            <textarea id="fNote" name="note" placeholder="Ví dụ: cửa hàng vật tư, đang quản lý kho bằng Excel, muốn xem tồn kho trên điện thoại."></textarea>
+          </div>
+          <p class="form-error" id="formError" role="alert"></p>
+          <div class="form-foot">
+            <button class="btn btn-solid" type="submit">Gửi yêu cầu</button>
+            <p>Nút này mở ứng dụng email với nội dung bạn vừa điền.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 NA Web Agency · 0352 472 151</span>
+    <span>Based on <a href="https://github.com/MengTo/threeui" rel="noopener">ThreeUI</a> (<a href="THREEUI-LICENSE.txt">MIT</a>)</span>
+  </footer>
+
+  <script>
+    (() => {
+      const books = {
+        web: {
+          title: "Website giới thiệu và bán hàng",
+          description:
+            "Trang web để khách tìm thấy bạn trên Google, hiểu bạn bán gì và để lại số điện thoại. Từ landing page một trang chạy quảng cáo đến cửa hàng online có giỏ hàng và thanh toán.",
+          gets: [
+            "Giao diện chuẩn điện thoại, tải nhanh",
+            "Form liên hệ đổ thẳng về Zalo của bạn",
+            "Trang quản trị để tự sửa chữ, ảnh, sản phẩm",
+            "Gắn sẵn Google Analytics và Facebook Pixel"
+          ],
+          steps: [
+            { title: "Chốt nội dung", body: "Bạn gửi thông tin, ảnh sản phẩm. Chúng tôi đề xuất bố cục và lời văn." },
+            { title: "Dựng và gửi bản xem thử", body: "Bạn xem trên điện thoại thật, góp ý trực tiếp qua Zalo." },
+            { title: "Đưa lên tên miền", body: "Cài SSL, khai báo với Google, hướng dẫn bạn tự cập nhật." }
+          ],
+          packages: [
+            { name: "Landing page 1 trang", price: "2,5 – 3,5 triệu", time: "3–5 ngày" },
+            { name: "Web giới thiệu công ty", price: "4 – 7 triệu", time: "10–14 ngày" },
+            { name: "Web bán hàng cơ bản", price: "11 – 16 triệu", time: "3–4 tuần" },
+            { name: "Web bán hàng đầy đủ", price: "20 – 32 triệu", time: "5–7 tuần" }
+          ],
+          work: "Nhà sách trực tuyến tích hợp AI: giỏ hàng, đặt hàng, tích điểm khách thân thiết và gợi ý sách tự động.",
+          from: "Từ 2,5 triệu",
+          time: "3 ngày đến 7 tuần"
+        },
+        quanly: {
+          title: "Phần mềm quản lý",
+          description:
+            "Thay sổ tay và những file Excel gửi qua lại bằng một hệ thống dùng chung trên điện thoại và máy tính. Làm theo đúng cách công ty bạn đang vận hành, chia giai đoạn để bạn trả từng phần.",
+          gets: [
+            "Mỗi nhân viên chỉ thấy đúng phần việc của mình",
+            "Hóa đơn, bảng lương, tồn kho tự tính",
+            "Báo cáo và xuất Excel khi cần",
+            "Chuyển dữ liệu từ file Excel cũ sang"
+          ],
+          steps: [
+            { title: "Ngồi xem bạn làm việc", body: "Chúng tôi ghi lại quy trình hiện tại và chỗ đang tốn thời gian nhất." },
+            { title: "Làm giai đoạn 1", body: "Phần quan trọng nhất chạy trước. Bạn dùng thật, góp ý, rồi mới nghiệm thu." },
+            { title: "Mở rộng khi đã ổn", body: "Thêm tính lương, công nợ, báo cáo ở giai đoạn 2 khi bạn sẵn sàng." }
+          ],
+          packages: [
+            { name: "Quản lý nhà trọ, giai đoạn 1", price: "8 – 12 triệu", time: "2–3 tuần" },
+            { name: "Quản lý nhân sự, giai đoạn 1", price: "8 – 12 triệu", time: "2–3 tuần" },
+            { name: "Quản lý kho và bán hàng, giai đoạn 1", price: "8 – 12 triệu", time: "3–4 tuần" },
+            { name: "Quản lý dự án nội bộ", price: "12 – 22 triệu", time: "3–5 tuần" }
+          ],
+          work: "Hệ thống quản lý cho một công ty nội thất: khách hàng, dự án 9 giai đoạn, hợp đồng, tiền cọc, thu chi theo công trình và trợ lý AI hỏi đáp dữ liệu.",
+          from: "Từ 8 triệu",
+          time: "Giai đoạn 1 trong 2–5 tuần"
+        },
+        hoctap: {
+          title: "Web học tập và đào tạo",
+          description:
+            "Cho trung tâm, gia sư và giáo viên: học viên tự luyện đề, hệ thống tự chấm và chỉ ra chỗ đang yếu. Bạn quản lý lớp, học phí và bài tập ở một nơi.",
+          gets: [
+            "Ngân hàng câu hỏi và đề có đếm giờ",
+            "Chấm điểm tự động, xem lại đáp án",
+            "Thống kê điểm mạnh, điểm yếu từng học viên",
+            "Học viên học được trên điện thoại"
+          ],
+          steps: [
+            { title: "Nhập ngân hàng đề", body: "Gửi đề hiện có dạng Word hoặc Excel, chúng tôi đưa vào hệ thống." },
+            { title: "Chạy thử với một lớp", body: "Một nhóm học viên dùng trước để chỉnh lại trải nghiệm." },
+            { title: "Mở cho toàn bộ học viên", body: "Thêm quản lý lớp, xếp hạng, bài tập về nhà ở giai đoạn 2." }
+          ],
+          packages: [
+            { name: "Web ôn tập, luyện đề, giai đoạn 1", price: "5 – 8 triệu", time: "2–4 tuần" },
+            { name: "Web ôn tập, giai đoạn 2", price: "5 – 8 triệu", time: "2–3 tuần" },
+            { name: "Nền tảng bán khóa học online", price: "28 – 45 triệu", time: "8–12 tuần" }
+          ],
+          work: "TeamCherry cho cô giáo dạy thêm: điểm danh, học phí kèm VietQR, giao và chấm bài trên điện thoại. Recall Vault: ứng dụng ôn từ vựng theo lặp lại ngắt quãng.",
+          from: "Từ 5 triệu",
+          time: "2 đến 12 tuần"
+        }
+      };
+
+      const body = document.body;
+      const cards = [...document.querySelectorAll(".book-card")];
+      const detailPanel = document.querySelector("#detailPanel");
+      const detailScroll = document.querySelector("#detailScroll");
+      const closeButton = document.querySelector("#closeButton");
+      const menuButton = document.querySelector("#menuButton");
+      const menuLayer = document.querySelector("#menuLayer");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const heroScroll = document.querySelector(".hero-scroll");
+      const coverVideos = [...document.querySelectorAll(".cover-motion")];
+      const $ = (id) => document.getElementById(id);
+      const settle = () => (reducedMotion.matches ? 0 : 700);
+      let selectedCard = null;
+      let frame = 0;
+      let pointerX = 0;
+      let pointerY = 0;
+      let pointerClientX = -10000;
+      let pointerClientY = -10000;
+
+      function el(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text) node.textContent = text;
+        return node;
+      }
+
+      function syncCoverMotion() {
+        coverVideos.forEach((video) => {
+          const card = video.closest(".book-card");
+          const visible =
+            body.dataset.mode === "gallery" ||
+            (body.dataset.mode === "detail" && card === selectedCard);
+          if (reducedMotion.matches || document.hidden || !visible || window.scrollY > heroScroll.offsetHeight) {
+            video.pause();
+            return;
+          }
+          const playing = video.play();
+          if (playing) playing.catch(() => {});
+        });
+      }
+
+      function updateParallax() {
+        frame = 0;
+        if (reducedMotion.matches) return;
+
+        if (body.dataset.mode === "detail" && selectedCard) {
+          const bounds = selectedCard.getBoundingClientRect();
+          const cx = bounds.left + bounds.width / 2;
+          const cy = bounds.top + bounds.height / 2;
+          const inView =
+            pointerClientX >= 0 && pointerClientX <= window.innerWidth &&
+            pointerClientY >= 0 && pointerClientY <= window.innerHeight;
+          const reachX = pointerClientX < cx ? Math.max(cx, 1) : Math.max(window.innerWidth - cx, 1);
+          const reachY = pointerClientY < cy ? Math.max(cy, 1) : Math.max(window.innerHeight - cy, 1);
+          const vx = inView ? Math.max(-1, Math.min(1, (pointerClientX - cx) / reachX)) : -5 / 16;
+          const vy = inView ? Math.max(-1, Math.min(1, (pointerClientY - cy) / reachY)) : 0;
+          selectedCard.style.setProperty("--detail-yaw", `${vx * 16}deg`);
+          selectedCard.style.setProperty("--detail-pitch", `${vy * -10}deg`);
+          return;
+        }
+
+        if (body.dataset.mode !== "gallery") return;
+        document.documentElement.style.setProperty("--mx", `${pointerX * 11}px`);
+        document.documentElement.style.setProperty("--my", `${pointerY * 8}px`);
+        cards.forEach((card, index) => {
+          const depth = index === 1 ? 1 : .58;
+          card.style.setProperty("--local-x", `${pointerX * 15 * depth}px`);
+          card.style.setProperty("--local-y", `${pointerY * 9 * depth}px`);
+        });
+      }
+
+      function selectBook(card) {
+        if (body.dataset.mode === "detail") return;
+        const data = books[card.dataset.book];
+        if (!data) return;
+
+        window.scrollTo({ top: 0, behavior: "instant" });
+        selectedCard = card;
+        card.style.setProperty("--detail-yaw", "-5deg");
+        card.style.setProperty("--detail-pitch", "0deg");
+        $("detailTitle").textContent = data.title;
+        $("detailDescription").textContent = data.description;
+        $("detailGets").replaceChildren(...data.gets.map((text) => el("li", "", text)));
+        $("detailSteps").replaceChildren(...data.steps.map((step) => {
+          const item = el("li");
+          const copy = el("span", "doc-step-copy");
+          copy.append(el("strong", "", step.title), el("span", "", step.body));
+          item.append(copy);
+          return item;
+        }));
+        $("detailPkg").replaceChildren(...data.packages.map((pkg) => {
+          const item = el("li");
+          item.append(
+            el("span", "pkg-name", pkg.name),
+            el("span", "pkg-price", pkg.price),
+            el("span", "pkg-time", pkg.time)
+          );
+          return item;
+        }));
+        $("detailWork").textContent = data.work;
+        $("detailFrom").textContent = data.from;
+        $("detailTime").textContent = data.time;
+        detailScroll.scrollTop = 0;
+
+        cards.forEach((item) => {
+          item.classList.toggle("selected", item === card);
+          item.tabIndex = -1;
+        });
+        body.dataset.mode = "detail";
+        syncCoverMotion();
+        detailPanel.setAttribute("aria-hidden", "false");
+        detailPanel.inert = false;
+        closeButton.tabIndex = 0;
+        window.setTimeout(() => closeButton.focus({ preventScroll: true }), settle());
+      }
+
+      function closeDetail(then) {
+        if (body.dataset.mode !== "detail") return;
+        body.dataset.mode = "gallery";
+        updateRise();
+        syncCoverMotion();
+        detailPanel.setAttribute("aria-hidden", "true");
+        detailPanel.inert = true;
+        closeButton.tabIndex = -1;
+        const lastCard = selectedCard;
+        lastCard?.style.setProperty("--detail-yaw", "-5deg");
+        lastCard?.style.setProperty("--detail-pitch", "0deg");
+        if (window.innerWidth <= 900) window.scrollTo({ top: 0 });
+        window.setTimeout(() => {
+          cards.forEach((card) => {
+            card.classList.remove("selected");
+            card.tabIndex = 0;
+          });
+          selectedCard = null;
+          if (typeof then === "function") then();
+          else lastCard?.focus({ preventScroll: true });
+        }, settle());
+      }
+
+      function toggleMenu(force) {
+        const open = typeof force === "boolean" ? force : body.dataset.menu !== "open";
+        body.dataset.menu = open ? "open" : "closed";
+        menuLayer.inert = !open;
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => selectBook(card));
+        card.addEventListener("pointerenter", () => { card.dataset.hovered = "true"; });
+        card.addEventListener("pointerleave", () => { card.dataset.hovered = "false"; });
+      });
+
+      coverVideos.forEach((video) => {
+        const reveal = () => { video.dataset.ready = "true"; };
+        if (video.readyState >= 2) reveal();
+        else video.addEventListener("loadeddata", reveal, { once: true });
+      });
+
+      document.addEventListener("visibilitychange", syncCoverMotion);
+      reducedMotion.addEventListener?.("change", syncCoverMotion);
+      syncCoverMotion();
+
+      window.addEventListener("pointermove", (event) => {
+        pointerX = event.clientX / window.innerWidth - .5;
+        pointerY = event.clientY / window.innerHeight - .5;
+        pointerClientX = event.clientX;
+        pointerClientY = event.clientY;
+        if (!frame) frame = window.requestAnimationFrame(updateParallax);
+      }, { passive: true });
+
+      let wasFar = false;
+      window.addEventListener("scroll", () => {
+        body.dataset.scrolled = String(window.scrollY > 40);
+        const far = window.scrollY > heroScroll.offsetHeight;
+        if (far !== wasFar) {
+          wasFar = far;
+          syncCoverMotion();
+        }
+      }, { passive: true });
+
+      const stageEl = document.querySelector(".stage");
+
+      // Pinned hero: while the stage is sticky, the books rise and shrink
+      // until every cover is fully on screen, then the page moves on.
+      const galleryInner = document.querySelector(".gallery-inner");
+      let riseFrame = 0;
+      let fit = { top: 0, lift: 0, scale: 1 };
+
+      function measureBooks() {
+        const saved = galleryInner.style.cssText;
+        stageEl.style.setProperty("--rise-y", "0px");
+        stageEl.style.setProperty("--rise-scale", "1");
+        const rects = cards.map((card) => card.getBoundingClientRect());
+        const stageTop = stageEl.getBoundingClientRect().top;
+        const top = Math.min(...rects.map((r) => r.top)) - stageTop;
+        const bottom = Math.max(...rects.map((r) => r.bottom)) - stageTop;
+        const header = window.innerWidth <= 560 ? 84 : 104;
+        const room = window.innerHeight - header - 32;
+        const scale = Math.min(1, room / (bottom - top));
+        stageEl.style.setProperty("--rise-origin", `${top}px`);
+        fit = { top, lift: Math.max(0, top - header), scale };
+        galleryInner.style.cssText = saved;
+        updateRise();
+      }
+
+      function updateRise() {
+        riseFrame = 0;
+        if (body.dataset.mode !== "gallery") return;
+        const span = Math.max(heroScroll.offsetHeight - window.innerHeight, 1);
+        const raw = Math.min(Math.max(window.scrollY / span, 0), 1);
+        const progress = reducedMotion.matches ? 0 : 1 - Math.pow(1 - raw, 2);
+        stageEl.style.setProperty("--rise-y", `${-progress * fit.lift}px`);
+        stageEl.style.setProperty("--rise-scale", String(1 - progress * (1 - fit.scale)));
+        stageEl.style.setProperty("--word-y", `${-progress * 140}px`);
+        stageEl.style.setProperty("--word-o", String(1 - progress * .85));
+      }
+
+      window.addEventListener("scroll", () => {
+        if (!riseFrame) riseFrame = window.requestAnimationFrame(updateRise);
+      }, { passive: true });
+      window.addEventListener("resize", measureBooks);
+      if (document.fonts) document.fonts.ready.then(measureBooks);
+      measureBooks();
+
+      if (!reducedMotion.matches && "IntersectionObserver" in window) {
+        document.documentElement.classList.add("js-motion");
+        const groups = [
+          ".reveal-line", ".section-head p", ".contact-lines",
+          ".promises > li", ".process > li",
+          ".toc-group", ".faq details", ".form .field", ".form-foot"
+        ];
+        groups.forEach((selector) => {
+          document.querySelectorAll(selector).forEach((node) => {
+            const siblings = [...node.parentElement.children].filter((child) => child.matches(selector));
+            node.classList.add("reveal");
+            node.style.setProperty("--i", Math.min(siblings.indexOf(node), 6));
+          });
+        });
+        document.querySelectorAll(".section-head h2").forEach((node) => node.classList.add("reveal-head"));
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          });
+        }, { rootMargin: "0px 0px -12% 0px", threshold: .12 });
+        document.querySelectorAll(".reveal, .section-head").forEach((node) => observer.observe(node));
+      }
+
+      closeButton.addEventListener("click", () => closeDetail());
+      menuButton.addEventListener("click", () => toggleMenu());
+
+      $("detailContact").addEventListener("click", (event) => {
+        event.preventDefault();
+        closeDetail(() => {
+          $("lien-he").scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth" });
+          $("fName").focus({ preventScroll: true });
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (event.target.closest("[data-menu-close]")) toggleMenu(false);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        if (body.dataset.menu === "open") toggleMenu(false);
+        else closeDetail();
+      });
+
+      $("contactForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const error = $("formError");
+        if (!name || !phone) {
+          error.textContent = "Điền tên và số điện thoại để chúng tôi gọi lại cho bạn.";
+          (name ? form.phone : form.name).focus();
+          return;
+        }
+        error.textContent = "";
+        const subject = `Yêu cầu báo giá: ${form.service.value}`;
+        const text = [
+          `Tên: ${name}`,
+          `Điện thoại/Zalo: ${phone}`,
+          `Cần làm: ${form.service.value}`,
+          `Ngân sách: ${form.budget.value}`,
+          "",
+          form.note.value.trim()
+        ].join("\n");
+        window.location.href =
+          `mailto:hieulp3a2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      });
+    })();
+  </script>
+  <script>
+    /* Sổ dự án: a two-page spread whose right (or left) leaf swings around
+       the spine. Drag it, tap a side, use the arrows or the index. */
+    (() => {
+      const root = document.getElementById("sbk");
+      const source = document.getElementById("sbkSource");
+      if (!root || !source) return;
+
+      const spread = document.getElementById("sbkSpread");
+      const slotL = document.getElementById("sbkLeft");
+      const slotR = document.getElementById("sbkRight");
+      const leaf = document.getElementById("sbkLeaf");
+      const front = document.getElementById("sbkFront");
+      const back = document.getElementById("sbkBack");
+      const prevBtn = document.getElementById("sbkPrev");
+      const nextBtn = document.getElementById("sbkNext");
+      const titleEl = document.getElementById("sbkTitle");
+      const countEl = document.getElementById("sbkCount");
+      const plates = [...document.querySelectorAll("#plateList .plate")];
+      const pages = [...source.querySelectorAll(".pg")];
+      const total = pages.length / 2;
+      const last = total - 1;
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const narrow = window.matchMedia("(max-width: 760px)");
+      let idx = 0;
+      let turn = null;
+      let drag = null;
+      let raf = 0;
+
+      document.documentElement.classList.add("js-book");
+
+      const pageL = (i) => pages[i * 2];
+      const pageR = (i) => pages[i * 2 + 1];
+      const copy = (page, interactive) => {
+        const node = page.cloneNode(true);
+        if (!interactive) {
+          node.querySelectorAll("a, button").forEach((el) => el.setAttribute("tabindex", "-1"));
+        }
+        return node;
+      };
+
+      function render() {
+        if (turn) {
+          const next = turn.dir === "next";
+          slotL.replaceChildren(copy(pageL(next ? turn.from : turn.to)));
+          slotR.replaceChildren(copy(pageR(next ? turn.to : turn.from)));
+          leaf.className = `sbk-leaf ${turn.dir}`;
+          front.replaceChildren(copy(next ? pageR(turn.from) : pageL(turn.from)));
+          back.replaceChildren(copy(next ? pageL(turn.to) : pageR(turn.to)));
+          leaf.hidden = false;
+        } else {
+          slotL.replaceChildren(copy(pageL(idx), true));
+          slotR.replaceChildren(copy(pageR(idx), true));
+          leaf.hidden = true;
+          spread.style.setProperty("--shade", "0");
+        }
+        const shown = turn ? turn.to : idx;
+        titleEl.textContent = pageL(shown).dataset.title || "";
+        countEl.textContent = `Trang đôi ${shown + 1} / ${total}`;
+        prevBtn.disabled = shown === 0;
+        nextBtn.disabled = shown === last;
+        plates.forEach((plate) => {
+          plate.setAttribute("aria-current", String(Number(plate.dataset.go) === shown));
+        });
+      }
+
+      function apply(t) {
+        const angle = turn.dir === "next" ? -180 * t : 180 * t;
+        leaf.style.transform = `rotateY(${angle.toFixed(2)}deg)`;
+        const lift = Math.sin(Math.PI * t);
+        spread.style.setProperty("--shade", lift.toFixed(3));
+        leaf.style.setProperty("--fa", (Math.min(t, .5) * .7).toFixed(3));
+        leaf.style.setProperty("--ba", (Math.min(1 - t, .5) * .7).toFixed(3));
+        root.style.setProperty("--shade", lift.toFixed(3));
+      }
+
+      function start(dir) {
+        if (turn) return false;
+        if (dir === "next" && idx >= last) return false;
+        if (dir === "prev" && idx <= 0) return false;
+        turn = { dir, from: idx, to: dir === "next" ? idx + 1 : idx - 1, t: 0 };
+        render();
+        apply(0);
+        return true;
+      }
+
+      function tween(target, done) {
+        cancelAnimationFrame(raf);
+        const from = turn.t;
+        const duration = 260 + 640 * Math.abs(target - from);
+        const begin = performance.now();
+        const frame = (now) => {
+          const k = Math.min(1, (now - begin) / duration);
+          const eased = 1 - Math.pow(1 - k, 3);
+          turn.t = from + (target - from) * eased;
+          apply(turn.t);
+          if (k < 1) raf = requestAnimationFrame(frame);
+          else done();
+        };
+        raf = requestAnimationFrame(frame);
+      }
+
+      function commit() {
+        tween(1, () => {
+          idx = turn.to;
+          turn = null;
+          render();
+        });
+      }
+
+      function cancel() {
+        tween(0, () => {
+          turn = null;
+          render();
+        });
+      }
+
+      function swap(i) {
+        if (reduced.matches) {
+          idx = i;
+          render();
+          return;
+        }
+        spread.classList.add("is-swapping");
+        window.setTimeout(() => {
+          idx = i;
+          render();
+          spread.classList.remove("is-swapping");
+        }, 220);
+      }
+
+      function go(i) {
+        if (turn || i === idx || i < 0 || i > last) return;
+        if (narrow.matches || reduced.matches || Math.abs(i - idx) > 1) {
+          swap(i);
+          return;
+        }
+        if (start(i > idx ? "next" : "prev")) commit();
+      }
+
+      /* on phones a horizontal swipe turns the page */
+      let swipe = null;
+      spread.addEventListener("pointerdown", (event) => {
+        if (narrow.matches) swipe = { x: event.clientX, y: event.clientY };
+      });
+      spread.addEventListener("pointerup", (event) => {
+        if (!swipe) return;
+        const dx = event.clientX - swipe.x;
+        const dy = event.clientY - swipe.y;
+        swipe = null;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? idx + 1 : idx - 1);
+      });
+
+      spread.addEventListener("pointerdown", (event) => {
+        if (narrow.matches || event.button !== 0 || turn) return;
+        if (event.target.closest("a, button")) return;
+        const bounds = spread.getBoundingClientRect();
+        const dir = event.clientX - bounds.left > bounds.width / 2 ? "next" : "prev";
+        if (!start(dir)) return;
+        event.preventDefault();
+        drag = { x0: event.clientX, half: bounds.width / 2, moved: 0 };
+        spread.setPointerCapture(event.pointerId);
+      });
+
+      spread.addEventListener("pointermove", (event) => {
+        if (!drag || !turn) return;
+        const dx = event.clientX - drag.x0;
+        drag.moved = Math.max(drag.moved, Math.abs(dx));
+        const raw = (turn.dir === "next" ? -dx : dx) / (drag.half * 1.2);
+        turn.t = Math.max(0, Math.min(1, raw));
+        apply(turn.t);
+      });
+
+      const release = () => {
+        if (!drag || !turn) return;
+        const { moved } = drag;
+        drag = null;
+        if (moved < 6 || turn.t > .35) commit();
+        else cancel();
+      };
+      spread.addEventListener("pointerup", release);
+      spread.addEventListener("pointercancel", release);
+
+      prevBtn.addEventListener("click", () => go(idx - 1));
+      nextBtn.addEventListener("click", () => go(idx + 1));
+      plates.forEach((plate) => {
+        plate.addEventListener("click", () => {
+          go(Number(plate.dataset.go));
+          root.scrollIntoView({ behavior: reduced.matches ? "auto" : "smooth", block: "center" });
+        });
+      });
+
+      root.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") { event.preventDefault(); go(idx + 1); }
+        if (event.key === "ArrowLeft") { event.preventDefault(); go(idx - 1); }
+      });
+
+      /* the book leans a little toward the cursor, never far */
+      root.addEventListener("pointermove", (event) => {
+        if (drag || narrow.matches || reduced.matches || event.pointerType === "touch") return;
+        const r = root.getBoundingClientRect();
+        const nx = Math.max(-1, Math.min(1, (event.clientX - (r.left + r.width / 2)) / (r.width * .6)));
+        const ny = Math.max(-1, Math.min(1, (event.clientY - (r.top + r.height / 2)) / (r.height * .9)));
+        root.style.setProperty("--rx", `${(-ny * 3).toFixed(2)}deg`);
+        root.style.setProperty("--ry", `${(nx * 4).toFixed(2)}deg`);
+      });
+      root.addEventListener("pointerleave", () => {
+        root.style.setProperty("--rx", "0deg");
+        root.style.setProperty("--ry", "0deg");
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
