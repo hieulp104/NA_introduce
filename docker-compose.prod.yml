@@ -1,0 +1,11 @@
+# Production stack for the demo server.
+#   git pull && docker compose -f docker-compose.prod.yml up -d --build
+name: introduce
+
+services:
+  web:
+    build: .
+    container_name: na-introduce
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8090:80"
